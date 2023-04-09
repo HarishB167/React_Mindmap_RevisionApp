@@ -1,0 +1,98 @@
+.form {
+  margin: 0 24px;
+  width: calc(100% - 48px);
+  position: relative;
+  height: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.form-group input[type="text"] {
+  outline: 0;
+  background: #1d1d1d;
+  color: #979797;
+  border: 0.8px solid;
+  border-radius: 3px;
+  width: 100%;
+  border-color: #979797;
+  padding: 12px;
+}
+
+.input-file input[type="file"] {
+  display: none;
+}
+
+.input-file {
+  padding: 8px 16px;
+  background: #363636;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  width: fit-content;
+}
+
+.color-chooser-container {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.color-chooser-input {
+  display: none;
+}
+
+.color-chooser-input:checked + label {
+  border: 5px solid rgba(54, 54, 54, 0.8);
+}
+
+label.color-chooser {
+  display: inline-block;
+  margin-right: 1.2rem;
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+}
+
+.color-chooser--red {
+  background: red;
+}
+
+.color-chooser--yellow {
+  background: yellow;
+}
+
+.color-chooser--green {
+  background: green;
+}
+
+.form-group-btns {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 47px;
+}
+
+.btn {
+  width: 154px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  background: rgba(0, 0, 0, 0);
+  color: #8687e7;
+}
+
+.btn-submit {
+  background: #8687e7;
+  color: white;
+}

@@ -1,0 +1,37 @@
+.form__title {
+  font-size: 2rem;
+}
+
+.form__options > span {
+  margin-right: 32px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.form__options {
+  position: relative;
+}
+
+span.form__sendbtn {
+  position: absolute;
+  right: 0;
+  margin-right: 0;
+  color: var(--cl-violet);
+}
+
+.modal-box {
+  font-size: 1.8rem;
+  background: var(--bg-gray);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  padding: 25px 0 16px;
+}
+
+.modal-box input[type="text"] {
+  background: var(--bg-gray);
+  border: 0.8px solid rgba(0, 0, 0, 0);
+}
+
+.modal-box input[type="text"]:focus {
+  border: 0.8px solid;
+}
