@@ -9,46 +9,12 @@ function Home(props) {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    async function retrieveTasks() {
+    async function retrieveRenderTasks() {
       const rs = await getTasks();
-      console.log("rs :>> ", rs);
       setTasks(rs);
     }
-    retrieveTasks();
+    retrieveRenderTasks();
   }, []);
-
-  const taskSets = [
-    {
-      taskHeader: "Today",
-      taskItems: [
-        {
-          title: "Do Math Homework",
-          datetime: "Today at 16:45",
-          category: "University",
-        },
-        {
-          title: "Take out dogs",
-          datetime: "Today at 16:45",
-          category: "University",
-        },
-        {
-          title: "Business meeting",
-          datetime: "Today at 16:45",
-          category: "University",
-        },
-      ],
-    },
-    {
-      taskHeader: "Completed",
-      taskItems: [
-        {
-          title: "Buy Grocery",
-          datetime: "Today at 16:45",
-          category: "University",
-        },
-      ],
-    },
-  ];
 
   return (
     <main className="main">
@@ -61,7 +27,7 @@ function Home(props) {
       </header>
       <SearchBar placeholder="Search for your task..." />
       <div className="content">
-        {taskSets.map((item, idx) => (
+        {tasks.map((item, idx) => (
           <TaskSet
             key={idx}
             taskHeader={item.taskHeader}

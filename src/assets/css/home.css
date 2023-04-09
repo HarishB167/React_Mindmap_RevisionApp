@@ -163,10 +163,6 @@ body {
   border-radius: 4px;
 }
 
-.task-item__category--university {
-  background: #809cff;
-}
-
 .bottom-nav {
   display: flex;
   justify-content: space-between;

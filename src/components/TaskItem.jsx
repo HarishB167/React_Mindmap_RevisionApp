@@ -1,4 +1,5 @@
 import React from "react";
+import { intToRGB, hashCode } from "../services/utils";
 
 function TaskItem({ title, datetime, category }) {
   return (
@@ -10,7 +11,10 @@ function TaskItem({ title, datetime, category }) {
         <div className="task-item__title">{title}</div>
         <div className="task-item__inner-line">
           <div className="task-item__datetime">{datetime}</div>
-          <div className="task-item__category task-item__category--university">
+          <div
+            className="task-item__category"
+            style={{ background: intToRGB(hashCode(category)) }}
+          >
             {category}
           </div>
         </div>
