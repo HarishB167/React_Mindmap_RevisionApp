@@ -184,6 +184,7 @@ body {
   margin-bottom: 8px;
   font-size: 2.4rem;
 }
+
 .bottom-nav__add-btn {
   position: relative;
 }
@@ -202,4 +203,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.bottom-nav__add-btn span:active {
+  background-color: #b8b8e6;
+}
+
+.c_point {
+  cursor: pointer;
 }

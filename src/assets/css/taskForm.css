@@ -19,6 +19,10 @@ span.form__sendbtn {
   color: var(--cl-violet);
 }
 
+.form__sendbtn--disabled > span {
+  cursor: not-allowed;
+}
+
 .modal-box {
   font-size: 1.8rem;
   background: var(--bg-gray);
@@ -27,11 +31,13 @@ span.form__sendbtn {
   padding: 25px 0 16px;
 }
 
-.modal-box input[type="text"] {
+.modal-box input[type="text"],
+.modal-box select {
   background: var(--bg-gray);
   border: 0.8px solid rgba(0, 0, 0, 0);
 }
 
-.modal-box input[type="text"]:focus {
+.modal-box input[type="text"]:focus,
+.modal-box select:focus {
   border: 0.8px solid;
 }

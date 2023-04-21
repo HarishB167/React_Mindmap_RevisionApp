@@ -36,19 +36,19 @@ function Home(props) {
         ))}
       </div>
       <div className="bottom-nav">
-        <div className="bottom-nav__item">
+        <div className="bottom-nav__item c_point">
           <span className="fa fa-home"></span>Index
         </div>
-        <div className="bottom-nav__item">
+        <div className="bottom-nav__item c_point">
           <span className="fa fa-calendar"></span>Calendar
         </div>
-        <div className="bottom-nav__add-btn">
-          <span>+</span>
+        <div className="bottom-nav__add-btn c_point">
+          <span onClick={() => props.history.push("/create-task")}>+</span>
         </div>
-        <div className="bottom-nav__item">
+        <div className="bottom-nav__item c_point">
           <span className="fa fa-clock-o"></span>Focus
         </div>
-        <div className="bottom-nav__item">
+        <div className="bottom-nav__item c_point">
           <span className="fa fa-user"></span>Profile
         </div>
       </div>
