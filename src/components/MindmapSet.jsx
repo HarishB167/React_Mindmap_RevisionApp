@@ -1,7 +1,7 @@
 import React from "react";
 import MindmapItem from "./MindmapItem";
 
-function MindmapSet({ category, mindmapItems }) {
+function MindmapSet({ category, mindmapItems, onMindmapItemClick }) {
   return (
     <div className="task-set">
       <div className="task-set__header task-set--dark">
@@ -15,6 +15,7 @@ function MindmapSet({ category, mindmapItems }) {
           createDate={item.createDate}
           nextRevisionDate={item.nextRevision}
           level={item.level}
+          onClick={() => onMindmapItemClick(item.id)}
         />
       ))}
     </div>

@@ -7,6 +7,7 @@ import CategoryChooser from "./pages/CategoryChooser";
 import TaskForm from "./pages/TaskForm";
 import TaskView from "./pages/TaskView";
 import MindmapIndex from "./pages/MindmapIndex";
+import MindmapView from "./pages/MindmapView";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -20,7 +21,8 @@ function App() {
         <Route path="/create-task" component={TaskForm} />
         <Route path="/task-new" component={TaskForm} />
         <Route path="/task-view" component={TaskView} />
-        <Route path="/mindmaps-list" component={MindmapIndex} />
+        <Route path="/mindmap-list" component={MindmapIndex} />
+        <Route path="/mindmap-view/:id" component={MindmapView} />
         <Route path="/" component={Home} />
       </Switch>
     </React.Fragment>

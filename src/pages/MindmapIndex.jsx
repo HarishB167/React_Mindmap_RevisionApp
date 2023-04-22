@@ -11,11 +11,15 @@ function MindmapIndex(props) {
 
   useEffect(() => {
     async function retrieveRenderMindmaps() {
-      const rs = await getMindmaps();
-      setMindmaps(rs);
+      const mMap = await getMindmaps();
+      setMindmaps(mMap);
     }
     retrieveRenderMindmaps();
   }, []);
+
+  const onMindmapItemClick = (id) => {
+    props.history.push(`/mindmap-view/${id}`);
+  };
 
   return (
     <main className="main">
@@ -34,6 +38,7 @@ function MindmapIndex(props) {
             category={item.mindmapCategory}
             mindmapItems={item.mindmapItems}
             level={item.level}
+            onMindmapItemClick={onMindmapItemClick}
           />
         ))}
       </div>

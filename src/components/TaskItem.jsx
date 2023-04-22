@@ -1,9 +1,9 @@
 import React from "react";
 import { intToRGB, hashCode } from "../services/utils";
 
-function TaskItem({ title, datetime, category }) {
+function TaskItem({ title, datetime, category, onClick }) {
   return (
-    <div className="task-item task-set--dark">
+    <div className="task-item task-set--dark c_point" onClick={onClick}>
       <span className="task-item__cricle">
         <span className="fa fa-circle-thin"></span>
       </span>

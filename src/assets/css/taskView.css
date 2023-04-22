@@ -53,14 +53,16 @@
 }
 
 .task__time,
-.task__category {
+.task__category,
+.task__line {
   width: 100%;
   display: flex;
   align-items: center;
 }
 
 .task__time,
-.task__category {
+.task__category,
+.task__line {
   margin-bottom: 29px;
 }
 

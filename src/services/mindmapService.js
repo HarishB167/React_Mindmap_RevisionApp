@@ -29,6 +29,7 @@ export async function getMindmaps() {
   const data = Object.entries(nestedMaps).map((item) => ({
     mindmapCategory: item[0],
     mindmapItems: item[1].map((mItem) => ({
+      id: mItem.id,
       title: mItem.title,
       createDate: formatDate(new Date(mItem.creation_date)),
       nextRevision: mItem.next_revision_date
@@ -39,6 +40,11 @@ export async function getMindmaps() {
   }));
 
   return data;
+}
+
+export async function getMindmap(id) {
+  const result = await http.get(`/revisionapp/mindmaps/${id}`);
+  return result.data;
 }
 
 export async function saveMindmap(mindmap) {

@@ -47,7 +47,7 @@ function Home(props) {
         </div>
         <div
           className="bottom-nav__item c_point"
-          onClick={() => props.history.push("/mindmaps-list")}
+          onClick={() => props.history.push("/mindmap-list")}
         >
           <span className="fa fa-clock-o"></span>
           Focus

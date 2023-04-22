@@ -1,10 +1,10 @@
 import React from "react";
 import { intToRGB, hashCode, getContrastColor } from "../services/utils";
 
-function MindmapItem({ title, createDate, nextRevisionDate, level }) {
+function MindmapItem({ title, createDate, nextRevisionDate, level, onClick }) {
   const bgColor = intToRGB(hashCode(level.repeat(2)));
   return (
-    <div className="task-item task-set--dark">
+    <div className="task-item task-set--dark c_point" onClick={onClick}>
       <span className="task-item__cricle">
         <span className="fa fa-circle-thin"></span>
       </span>
