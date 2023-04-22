@@ -1,37 +1,39 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import TaskSet from "../components/TaskSet";
-import { getTasks } from "../services/taskService";
+import MindmapSet from "../components/MindmapSet";
+import { getMindmaps } from "../services/mindmapService";
 import "../assets/css/home.css";
 import profilePhoto from "../assets/images/profile_photo.png";
 
-function Home(props) {
-  const [tasks, setTasks] = useState([]);
+function MindmapIndex(props) {
+  const [mindmaps, setMindmaps] = useState([]);
 
   useEffect(() => {
-    async function retrieveRenderTasks() {
-      const rs = await getTasks();
-      setTasks(rs);
+    async function retrieveRenderMindmaps() {
+      const rs = await getMindmaps();
+      setMindmaps(rs);
     }
-    retrieveRenderTasks();
+    retrieveRenderMindmaps();
   }, []);
 
   return (
     <main className="main">
       <header className="header">
         <span className="header__sort-icon icon"></span>
-        <span>Index</span>
+        <span>Mindmap : Index</span>
         <span className="header__profile-photo">
           <img src={profilePhoto} alt="Profile photo" />
         </span>
       </header>
-      <SearchBar placeholder="Search for your task..." />
+      <SearchBar placeholder="Search for your mindmaps..." />
       <div className="content">
-        {tasks.map((item, idx) => (
-          <TaskSet
+        {mindmaps.map((item, idx) => (
+          <MindmapSet
             key={idx}
-            taskHeader={item.taskHeader}
-            taskItems={item.taskItems}
+            category={item.mindmapCategory}
+            mindmapItems={item.mindmapItems}
+            level={item.level}
           />
         ))}
       </div>
@@ -43,14 +45,10 @@ function Home(props) {
           <span className="fa fa-calendar"></span>Calendar
         </div>
         <div className="bottom-nav__add-btn c_point">
-          <span onClick={() => props.history.push("/create-task")}>+</span>
+          <span onClick={() => props.history.push("/create-mindmap")}>+</span>
         </div>
-        <div
-          className="bottom-nav__item c_point"
-          onClick={() => props.history.push("/mindmaps-list")}
-        >
-          <span className="fa fa-clock-o"></span>
-          Focus
+        <div className="bottom-nav__item c_point">
+          <span className="fa fa-clock-o"></span>Focus
         </div>
         <div className="bottom-nav__item c_point">
           <span className="fa fa-user"></span>Profile
@@ -60,4 +58,4 @@ function Home(props) {
   );
 }
 
-export default Home;
+export default MindmapIndex;
