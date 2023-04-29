@@ -20,7 +20,7 @@ const schema = {
   revisionLevel: Joi.number().required().label("Revision Level"),
 };
 
-function TaskForm(props) {
+function MindmapTaskForm(props) {
   const [formData, setFormData] = useState({
     id: "",
     title: "",
@@ -29,6 +29,7 @@ function TaskForm(props) {
     category: "",
     revisionLevel: "",
   });
+  const [errors, setErrors] = useState({});
 
   const [categoryPickerShow, setCategoryPickerShow] = useState(false);
   const [revisionLevels, setRevisionLevels] = useState([]);
@@ -51,11 +52,12 @@ function TaskForm(props) {
     retrieveRenderCategories();
   }, []);
 
-  const onSubmit = async () => {
+  const handleSubmit = async () => {
     const result = validate();
     console.log("result :>> ", result);
     validateProperty({ name: "title", value: "somevalue" });
     if (result) {
+      setErrors(result);
       toast.error("Please fill form completely");
       return;
     }
@@ -95,7 +97,7 @@ function TaskForm(props) {
         <form action="" className="form">
           <div className="form-group">
             <label htmlFor="task-title" className="form__title">
-              Add Task
+              Add Mindmap Task
             </label>
             <Input
               id="task-title"
@@ -106,9 +108,10 @@ function TaskForm(props) {
               onChange={(e) =>
                 setFormData({ ...formData, title: e.target.value })
               }
+              error={errors["title"]}
               required
             />
-            <input
+            <Input
               id="task-description"
               name="task-description"
               type="text"
@@ -117,9 +120,10 @@ function TaskForm(props) {
               onChange={(e) =>
                 setFormData({ ...formData, description: e.target.value })
               }
+              error={errors["description"]}
               required
             />
-            <input
+            <Input
               id="task-mindmap-image-url"
               name="task-mindmap-image-url"
               type="text"
@@ -128,6 +132,7 @@ function TaskForm(props) {
               onChange={(e) =>
                 setFormData({ ...formData, mindmapImageUrl: e.target.value })
               }
+              error={errors["mindmapImageUrl"]}
               required
             />
             <select
@@ -160,7 +165,7 @@ function TaskForm(props) {
               className={`form__sendbtn ${
                 validate() ? " form__sendbtn--disabled" : ""
               }`}
-              onClick={onSubmit}
+              onClick={handleSubmit}
             >
               <span className="fa fa-angle-double-right"></span>
             </span>
@@ -185,4 +190,4 @@ function TaskForm(props) {
   );
 }
 
-export default TaskForm;
+export default MindmapTaskForm;

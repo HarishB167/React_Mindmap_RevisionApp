@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
-import SearchBar from "../components/SearchBar";
-import TaskSet from "../components/TaskSet";
-import { getTasks } from "../services/taskService";
 import "../assets/css/home.css";
 import profilePhoto from "../assets/images/profile_photo.png";
+import TaskList from "./TaskList";
+import { Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
+import MindmapList from "./MindmapList";
 
 function Home(props) {
-  const [tasks, setTasks] = useState([]);
+  const [activePage, setActivePage] = useState("");
 
   useEffect(() => {
-    async function retrieveRenderTasks() {
-      const rs = await getTasks();
-      setTasks(rs);
-    }
-    retrieveRenderTasks();
-  }, []);
+    const path = props.history.location.pathname;
+    if (path === "/") setActivePage("index");
+    else if (path === "/mindmap-list") setActivePage("mindmapList");
+  });
+
+  const handleAdd = () => {
+    props.history.push("/create-task");
+  };
 
   return (
     <main className="main">
@@ -25,32 +28,33 @@ function Home(props) {
           <img src={profilePhoto} alt="Profile photo" />
         </span>
       </header>
-      <SearchBar placeholder="Search for your task..." />
-      <div className="content">
-        {tasks.map((item, idx) => (
-          <TaskSet
-            key={idx}
-            taskHeader={item.taskHeader}
-            taskItems={item.taskItems}
-          />
-        ))}
-      </div>
+      <Switch>
+        <Route path="/mindmap-list" component={MindmapList} />
+        <Route path="/" component={TaskList} />
+      </Switch>
       <div className="bottom-nav">
-        <div className="bottom-nav__item c_point">
+        <div
+          className="bottom-nav__item c_point"
+          onClick={() => activePage !== "index" && props.history.push("/")}
+          style={{ color: activePage === "index" ? "red" : "inherit" }}
+        >
           <span className="fa fa-home"></span>Index
         </div>
         <div className="bottom-nav__item c_point">
           <span className="fa fa-calendar"></span>Calendar
         </div>
         <div className="bottom-nav__add-btn c_point">
-          <span onClick={() => props.history.push("/create-task")}>+</span>
+          <span onClick={handleAdd}>+</span>
         </div>
         <div
           className="bottom-nav__item c_point"
-          onClick={() => props.history.push("/mindmap-list")}
+          onClick={() =>
+            activePage !== "mindmapList" && props.history.push("/mindmap-list")
+          }
+          style={{ color: activePage === "mindmapList" ? "red" : "inherit" }}
         >
-          <span className="fa fa-clock-o"></span>
-          Focus
+          <span className="fa fa-snowflake-o"></span>
+          Mindmap
         </div>
         <div className="bottom-nav__item c_point">
           <span className="fa fa-user"></span>Profile

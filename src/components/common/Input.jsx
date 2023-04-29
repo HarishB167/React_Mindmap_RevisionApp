@@ -4,7 +4,14 @@ const Input = ({ error, ...rest }) => {
   return (
     <React.Fragment>
       <input {...rest} />
-      {error && <div className="alert alert-danger">{error}</div>}
+      {error && (
+        <div
+          className="alert alert-danger"
+          style={{ color: "darkorange", fontSize: "1.5rem" }}
+        >
+          {error}
+        </div>
+      )}
     </React.Fragment>
   );
 };

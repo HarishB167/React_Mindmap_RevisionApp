@@ -12,7 +12,7 @@ import { getRevisionLevels } from "../services/revisionService";
 import LabelFAIcon from "../components/common/viewPage/LabelFAIcon";
 import LoadingPage from "../components/LoadingPage";
 
-function MindmapView(props) {
+function MindmapForm(props) {
   const [mindmap, setMindmap] = useState({});
   const [categories, setCategories] = useState([]);
   const [revLevels, setRevLevels] = useState([]);
@@ -135,4 +135,4 @@ function MindmapView(props) {
   );
 }
 
-export default MindmapView;
+export default MindmapForm;
