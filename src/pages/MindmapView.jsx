@@ -4,11 +4,18 @@ import "../assets/css/categoryCreate.css";
 import "../assets/css/categoryChooser.css";
 import "../assets/css/taskForm.css";
 import "../assets/css/taskView.css";
-import { getMindmap } from "../services/mindmapService";
-import { formatDate } from "../services/utils";
+import { getCategories, getMindmap } from "../services/mindmapService";
+import InputDate from "../components/common/viewPage/InputDate";
+import InputSelect from "../components/common/viewPage/InputSelect";
+import InputNumber from "../components/common/viewPage/InputNumber";
+import { getRevisionLevels } from "../services/revisionService";
+import LabelFAIcon from "../components/common/viewPage/LabelFAIcon";
+import LoadingPage from "../components/LoadingPage";
 
 function MindmapView(props) {
   const [mindmap, setMindmap] = useState({});
+  const [categories, setCategories] = useState([]);
+  const [revLevels, setRevLevels] = useState([]);
 
   //   category: 2
   // category_name: "Bhagavad_Gita"
@@ -27,15 +34,41 @@ function MindmapView(props) {
       setMindmap(mMap);
     }
     retrieveMindmap();
+    async function retrieveCategoriesNLevels() {
+      const cg = await getCategories();
+      const lvls = await getRevisionLevels();
+      setCategories(cg.map((item) => ({ value: item.id, name: item.name })));
+      setRevLevels(lvls.map((item) => ({ value: item.id, name: item.level })));
+    }
+    retrieveCategoriesNLevels();
   }, []);
+
+  const handleDateChange = (e) => {
+    const date = e.target.value;
+    if (date)
+      setMindmap({
+        ...mindmap,
+        creation_date: new Date(e.target.value).toISOString(),
+      });
+  };
+
+  const getRevisionLevelIdFor = (level_name) => {
+    const levelObj = revLevels.find((item) => item.name === level_name);
+    if (levelObj) return levelObj.value;
+    return level_name;
+  };
+
+  if (Object.keys(mindmap).length === 0) {
+    return <LoadingPage />;
+  }
 
   return (
     <main className="main">
       <header className="header">
-        <span className="header__cross-icon">
+        <span className="header__icon" onClick={() => props.history.goBack()}>
           <span className="fa fa-times"></span>
         </span>
-        <span className="header__cross-icon">
+        <span className="header__icon">
           <span className="fa fa-refresh"></span>
         </span>
       </header>
@@ -53,54 +86,47 @@ function MindmapView(props) {
         <div className="task__description">{mindmap.description}</div>
         <div className="task__imagelink">{mindmap.image_link}</div>
         <div className="task__time">
-          <span className="task__icon">
-            <span className="fa fa-clock-o"></span>
-          </span>
-          <span className="task__time-label">Mindmap Created :</span>
-          <label htmlFor="task-created" className="input-file task__val-picker">
-            {mindmap.creation_date &&
-              formatDate(new Date(mindmap.creation_date))}
-            <input type="file" name="task-created" id="task-created" />
-          </label>
+          <LabelFAIcon faClass="fa fa-clock-o" label="Mindmap Created :" />
+          <InputDate
+            date={mindmap.creation_date}
+            onDateChange={handleDateChange}
+            name="task-created"
+          />
         </div>
         <div className="task__category">
-          <span className="task__icon">
-            <span className="fa fa-tag"></span>
-          </span>
-          <span className="task__category-label">Mindmap Category :</span>
-          <label
-            htmlFor="category-icon"
-            className="input-file task__val-picker"
-          >
-            {mindmap.category_name}
-            <input type="file" name="category-icon" id="category-icon" />
-          </label>
+          <LabelFAIcon faClass="fa fa-tag" label="Mindmap Category :" />
+          <InputSelect
+            name="category"
+            value={mindmap.category}
+            options={categories}
+            onChange={(e) =>
+              setMindmap({ ...mindmap, category: e.target.value })
+            }
+          />
         </div>
         <div className="task__line">
-          <span className="task__icon">
-            <span className="fa fa-level-up"></span>
-          </span>
-          <span className="task__line-label">Mindmap Level :</span>
-          <label htmlFor="task-level" className="input-file task__val-picker">
-            {mindmap.revision_level}
-            <input type="file" name="task-level" id="task-level" />
-          </label>
+          <LabelFAIcon faClass="fa fa-level-up" label="Mindmap Level :" />
+          <InputSelect
+            name="level"
+            value={getRevisionLevelIdFor(mindmap.revision_level)}
+            options={revLevels}
+            onChange={(e) =>
+              setMindmap({ ...mindmap, revision_level: e.target.value })
+            }
+          />
         </div>
         <div className="task__line">
-          <span className="task__icon">
-            <span className="fa fa-gamepad"></span>
-          </span>
-          <span className="task__line-label">Revision count :</span>
-          <label htmlFor="task-count" className="input-file task__val-picker">
-            {mindmap.revision_count}
-            <input type="file" name="task-count" id="task-count" />
-          </label>
+          <LabelFAIcon faClass="fa fa-gamepad" label="Revision count :" />
+          <InputNumber
+            name="revision-count"
+            value={mindmap.revision_count}
+            onChange={(e) =>
+              setMindmap({ ...mindmap, revision_count: e.target.valueAsNumber })
+            }
+          />
         </div>
         <button className="task__delete-btn">
-          <span className="task__icon">
-            <span className="fa fa-trash"></span>
-          </span>
-          Delete Task
+          <LabelFAIcon faClass="fa fa-trash" label="Delete Task" />
         </button>
       </div>
 

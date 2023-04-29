@@ -9,10 +9,10 @@ function TaskView(props) {
   return (
     <main className="main">
       <header className="header">
-        <span className="header__cross-icon">
+        <span className="header__icon">
           <span className="fa fa-times"></span>
         </span>
-        <span className="header__cross-icon">
+        <span className="header__icon">
           <span className="fa fa-refresh"></span>
         </span>
       </header>
