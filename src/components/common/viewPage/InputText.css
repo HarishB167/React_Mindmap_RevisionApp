@@ -1,0 +1,8 @@
+.task__input-text {
+  background: inherit;
+  color: inherit;
+  outline: 0;
+  border: gray 1px solid;
+  padding: 0.4rem;
+  text-align: center;
+}

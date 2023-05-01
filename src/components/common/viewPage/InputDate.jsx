@@ -1,9 +1,10 @@
 import React from "react";
 import { formatDate } from "../../../services/utils";
 
-const InputDate = ({ name, date, onDateChange }) => {
+const InputDate = ({ name, date, onDateChange, ...rest }) => {
   return (
     <input
+      {...rest}
       type="date"
       className="task__input-date"
       name={name}

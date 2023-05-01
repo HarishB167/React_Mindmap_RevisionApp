@@ -1,8 +1,9 @@
 import React from "react";
 
-function InputNumber({ name, value, onChange }) {
+function InputNumber({ name, value, onChange, ...rest }) {
   return (
     <input
+      {...rest}
       type="number"
       className="task__input-number"
       name={name}

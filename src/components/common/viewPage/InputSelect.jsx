@@ -1,8 +1,9 @@
 import React from "react";
 
-const InputSelect = ({ name, value, options, onChange }) => {
+const InputSelect = ({ name, value, options, onChange, ...rest }) => {
   return (
     <select
+      {...rest}
       name={name}
       value={value}
       onChange={onChange}

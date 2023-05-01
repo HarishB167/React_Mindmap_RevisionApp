@@ -43,8 +43,19 @@ export async function getMindmaps() {
 }
 
 export async function getMindmap(id) {
-  const result = await http.get(`/revisionapp/mindmaps/${id}`);
-  return result.data;
+  const { data: mindmap } = await http.get(`/revisionapp/mindmaps/${id}`);
+  const m = {
+    id: id,
+    title: mindmap.title,
+    description: mindmap.description,
+    category: mindmap.category,
+    mindmapImageUrl: mindmap.image_link,
+    creationDate: mindmap.creation_date,
+    revisionLevel: mindmap.revision_level,
+    revisionLevelId: mindmap.revision_level_id,
+    revisionCount: mindmap.revision_count,
+  };
+  return m;
 }
 
 export async function saveMindmap(mindmap) {
@@ -54,7 +65,7 @@ export async function saveMindmap(mindmap) {
     category: mindmap.category,
     image_link: mindmap.mindmapImageUrl,
     creation_date: new Date().toISOString(),
-    revision_level: mindmap.revisionLevel,
+    revision_level: mindmap.revisionLevelId,
   };
   if (mindmap.id) {
     const result = await http.put(`/revisionapp/mindmaps/${mindmap.id}/`, m);

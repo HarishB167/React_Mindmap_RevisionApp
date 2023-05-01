@@ -4,29 +4,24 @@ import "../assets/css/categoryCreate.css";
 import "../assets/css/categoryChooser.css";
 import "../assets/css/taskForm.css";
 import "../assets/css/taskView.css";
-import { getCategories, getMindmap } from "../services/mindmapService";
 import InputDate from "../components/common/viewPage/InputDate";
 import InputSelect from "../components/common/viewPage/InputSelect";
 import InputNumber from "../components/common/viewPage/InputNumber";
-import { getRevisionLevels } from "../services/revisionService";
+import InputText from "../components/common/viewPage/InputText";
 import LabelFAIcon from "../components/common/viewPage/LabelFAIcon";
 import LoadingPage from "../components/LoadingPage";
+import {
+  getCategories,
+  getMindmap,
+  saveMindmap,
+} from "../services/mindmapService";
+import { getRevisionLevels } from "../services/revisionService";
 
 function MindmapForm(props) {
   const [mindmap, setMindmap] = useState({});
   const [categories, setCategories] = useState([]);
   const [revLevels, setRevLevels] = useState([]);
-
-  //   category: 2
-  // category_name: "Bhagavad_Gita"
-  // creation_date: "2023-04-06T06:11:39.705175Z"
-  // description: "Vistar"
-  // id: 2
-  // image_link: "https://to.do"
-  // next_revision_date: null
-  // revision_count: 0
-  // revision_level: "Level 4"
-  // title: "Vistar"
+  const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
     async function retrieveMindmap() {
@@ -48,7 +43,7 @@ function MindmapForm(props) {
     if (date)
       setMindmap({
         ...mindmap,
-        creation_date: new Date(e.target.value).toISOString(),
+        creationDate: new Date(e.target.value).toISOString(),
       });
   };
 
@@ -78,19 +73,53 @@ function MindmapForm(props) {
           <span className="task__title-circle">
             <span className="fa fa-circle-o"></span>
           </span>
-          <span className="task__title-text">{mindmap.title}</span>
-          <span className="task__edit-btn">
+          <span className="task__title-text">
+            {!editMode && mindmap.title}
+            {editMode && (
+              <InputText
+                value={mindmap.title}
+                onChange={(e) =>
+                  setMindmap({ ...mindmap, title: e.target.value })
+                }
+              />
+            )}
+          </span>
+          <span
+            className="task__edit-btn"
+            onClick={() => setEditMode(!editMode)}
+          >
             <span className="fa fa-pencil-square-o"></span>
           </span>
         </div>
-        <div className="task__description">{mindmap.description}</div>
-        <div className="task__imagelink">{mindmap.image_link}</div>
+        <div className="task__description">
+          {!editMode && mindmap.description}
+          {editMode && (
+            <InputText
+              value={mindmap.description}
+              onChange={(e) =>
+                setMindmap({ ...mindmap, description: e.target.value })
+              }
+            />
+          )}
+        </div>
+        <div className="task__imagelink">
+          {!editMode && mindmap.mindmapImageUrl}
+          {editMode && (
+            <InputText
+              value={mindmap.mindmapImageUrl}
+              onChange={(e) =>
+                setMindmap({ ...mindmap, mindmapImageUrl: e.target.value })
+              }
+            />
+          )}
+        </div>
         <div className="task__time">
           <LabelFAIcon faClass="fa fa-clock-o" label="Mindmap Created :" />
           <InputDate
-            date={mindmap.creation_date}
+            date={mindmap.creationDate}
             onDateChange={handleDateChange}
             name="task-created"
+            disabled={!editMode}
           />
         </div>
         <div className="task__category">
@@ -102,27 +131,30 @@ function MindmapForm(props) {
             onChange={(e) =>
               setMindmap({ ...mindmap, category: e.target.value })
             }
+            disabled={!editMode}
           />
         </div>
         <div className="task__line">
           <LabelFAIcon faClass="fa fa-level-up" label="Mindmap Level :" />
           <InputSelect
             name="level"
-            value={getRevisionLevelIdFor(mindmap.revision_level)}
+            value={getRevisionLevelIdFor(mindmap.revisionLevelId)}
             options={revLevels}
             onChange={(e) =>
-              setMindmap({ ...mindmap, revision_level: e.target.value })
+              setMindmap({ ...mindmap, revisionLevelId: e.target.value })
             }
+            disabled={!editMode}
           />
         </div>
         <div className="task__line">
           <LabelFAIcon faClass="fa fa-gamepad" label="Revision count :" />
           <InputNumber
             name="revision-count"
-            value={mindmap.revision_count}
+            value={mindmap.revisionCount}
             onChange={(e) =>
-              setMindmap({ ...mindmap, revision_count: e.target.valueAsNumber })
+              setMindmap({ ...mindmap, revisionCount: e.target.valueAsNumber })
             }
+            disabled={!editMode}
           />
         </div>
         <button className="task__delete-btn">
@@ -130,7 +162,18 @@ function MindmapForm(props) {
         </button>
       </div>
 
-      <button className="btn btn-submit fix-bottom">Edit Task</button>
+      {editMode && (
+        <button
+          className="btn btn-submit fix-bottom"
+          onClick={() => {
+            console.log("mindmap :>> ", mindmap);
+            saveMindmap(mindmap);
+            setEditMode(!editMode);
+          }}
+        >
+          Edit Task
+        </button>
+      )}
     </main>
   );
 }
