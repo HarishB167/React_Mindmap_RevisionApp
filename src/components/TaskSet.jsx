@@ -1,7 +1,7 @@
 import React from "react";
 import TaskItem from "./TaskItem";
 
-function TaskSet({ taskHeader, taskItems }) {
+function TaskSet({ taskHeader, taskItems, onTaskItemClick }) {
   return (
     <div className="task-set">
       <div className="task-set__header task-set--dark">
@@ -14,6 +14,7 @@ function TaskSet({ taskHeader, taskItems }) {
           title={item.title}
           datetime={item.datetime}
           category={item.category}
+          onClick={() => onTaskItemClick(item.id)}
         />
       ))}
     </div>

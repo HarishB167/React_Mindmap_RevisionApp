@@ -14,6 +14,10 @@ function TaskList(props) {
     retrieveRenderTasks();
   }, []);
 
+  const onTaskItemClick = (id) => {
+    props.history.push(`/task-view/${id}`);
+  };
+
   return (
     <React.Fragment>
       <SearchBar placeholder="Search for your task..." />
@@ -23,6 +27,7 @@ function TaskList(props) {
             key={idx}
             taskHeader={item.taskHeader}
             taskItems={item.taskItems}
+            onTaskItemClick={onTaskItemClick}
           />
         ))}
       </div>

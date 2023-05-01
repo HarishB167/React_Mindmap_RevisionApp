@@ -4,9 +4,9 @@ import { ToastContainer } from "react-toastify";
 import Home from "./pages/Home";
 import CategoryCreate from "./pages/CategoryCreate";
 import CategoryChooser from "./pages/CategoryChooser";
-import MindmapTaskForm from "./pages/MindmapTaskForm";
-import TaskView from "./pages/TaskView";
-import MindmapForm from "./pages/MindmapForm";
+import MindmapNewForm from "./pages/MindmapNewForm";
+import TaskViewEditForm from "./pages/TaskViewEditForm";
+import MindmapViewEditForm from "./pages/MindmapVieEditForm";
 import ImageViewer from "./pages/ImageViewer";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -18,10 +18,10 @@ function App() {
       <Switch>
         <Route path="/category-create" component={CategoryCreate} />
         <Route path="/category-choose" component={CategoryChooser} />
-        <Route path="/create-task" component={MindmapTaskForm} />
-        <Route path="/task-new" component={MindmapTaskForm} />
-        <Route path="/task-view" component={TaskView} />
-        <Route path="/mindmap-view/:id" component={MindmapForm} />
+        <Route path="/create-task" component={MindmapNewForm} />
+        <Route path="/task-new" component={MindmapNewForm} />
+        <Route path="/task-view/:id" component={TaskViewEditForm} />
+        <Route path="/mindmap-view/:id" component={MindmapViewEditForm} />
         <Route path="/image-view" component={ImageViewer} />
         <Route path="/" component={Home} />
       </Switch>

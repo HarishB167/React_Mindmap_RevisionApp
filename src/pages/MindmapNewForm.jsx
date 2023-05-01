@@ -20,7 +20,7 @@ const schema = {
   revisionLevel: Joi.number().required().label("Revision Level"),
 };
 
-function MindmapTaskForm(props) {
+function MindmapNewForm(props) {
   const [formData, setFormData] = useState({
     id: "",
     title: "",
@@ -190,4 +190,4 @@ function MindmapTaskForm(props) {
   );
 }
 
-export default MindmapTaskForm;
+export default MindmapNewForm;

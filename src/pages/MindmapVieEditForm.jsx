@@ -4,11 +4,11 @@ import "../assets/css/categoryCreate.css";
 import "../assets/css/categoryChooser.css";
 import "../assets/css/taskForm.css";
 import "../assets/css/taskView.css";
-import InputDate from "../components/common/viewPage/InputDate";
-import InputSelect from "../components/common/viewPage/InputSelect";
-import InputNumber from "../components/common/viewPage/InputNumber";
-import InputText from "../components/common/viewPage/InputText";
-import LabelFAIcon from "../components/common/viewPage/LabelFAIcon";
+import InputDate from "../components/common/viewEditPage/InputDate";
+import InputSelect from "../components/common/viewEditPage/InputSelect";
+import InputNumber from "../components/common/viewEditPage/InputNumber";
+import InputText from "../components/common/viewEditPage/InputText";
+import LabelFAIcon from "../components/common/viewEditPage/LabelFAIcon";
 import LoadingPage from "../components/LoadingPage";
 import {
   getCategories,
@@ -17,7 +17,7 @@ import {
 } from "../services/mindmapService";
 import { getRevisionLevels } from "../services/revisionService";
 
-function MindmapForm(props) {
+function MindmapViewEditForm(props) {
   const [mindmap, setMindmap] = useState({});
   const [categories, setCategories] = useState([]);
   const [revLevels, setRevLevels] = useState([]);
@@ -43,7 +43,7 @@ function MindmapForm(props) {
     if (date)
       setMindmap({
         ...mindmap,
-        creationDate: new Date(e.target.value).toISOString(),
+        creationDate: new Date(date).toISOString(),
       });
   };
 
@@ -178,4 +178,4 @@ function MindmapForm(props) {
   );
 }
 
-export default MindmapForm;
+export default MindmapViewEditForm;
