@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../assets/css/home.css";
-import "../assets/css/categoryCreate.css";
-import "../assets/css/categoryChooser.css";
+import "./CategoryChooser.css";
 
 function CategoryItem({ name, iconElement, bgColor, onCategorySelected }) {
   return (

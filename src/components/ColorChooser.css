@@ -1,0 +1,21 @@
+.color-chooser-container {
+  overflow: auto;
+  white-space: nowrap;
+  display: flex;
+}
+
+.color-chooser-input {
+  display: none;
+}
+
+.color-chooser-input:checked + label {
+  border: 5px solid rgba(54, 54, 54, 0.8);
+}
+
+label.color-chooser {
+  display: inline-block;
+  margin-right: 1.2rem;
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+}

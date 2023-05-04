@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Joi from "joi-browser";
 import { toast } from "react-toastify";
-import "../assets/css/home.css";
-import "../assets/css/categoryCreate.css";
-import "../assets/css/categoryChooser.css";
-import "../assets/css/taskForm.css";
+// import "../assets/css/home.css";
+// import "../assets/css/categoryCreate.css";
+// import "../assets/css/categoryChooser.css";
+// import "../assets/css/taskForm.css";
+import "./MindmapNewForm.css";
 import CategoryChooser from "./CategoryChooser";
 import Input from "../components/common/Input";
 import { getRevisionLevels } from "../services/revisionService";

@@ -1,0 +1,24 @@
+.task-set {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  margin: 0 24px;
+  width: calc(100% - 48px);
+}
+
+.task-set__header {
+  margin: 12px 0 8px;
+  padding: 5px 10px;
+  display: inline-block;
+  width: fit-content;
+  font-size: 1.2rem;
+  border-radius: 6px;
+}
+
+.task-set__header span {
+  margin-left: 10px;
+}
+
+.task-set--dark {
+  background: #363636;
+}

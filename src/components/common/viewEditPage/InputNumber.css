@@ -1,0 +1,23 @@
+.task__input-date,
+.task__input-select,
+.task__input-number {
+  color: inherit;
+  border: none;
+  padding: 8px 16px;
+  background: #363636;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  width: fit-content;
+  outline: none;
+  margin-left: auto;
+}
+
+.task__input-number::-webkit-outer-spin-button,
+.task__input-number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.task__input-number {
+  width: 100px;
+  -moz-appearance: textfield;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import "./LabelFAIcon.css";
 
 // Label with Font-Awesome icon
 

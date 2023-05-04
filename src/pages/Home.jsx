@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "../assets/css/home.css";
 import profilePhoto from "../assets/images/profile_photo.png";
 import TaskList from "./TaskList";
 import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
 import MindmapList from "./MindmapList";
+import "./Home.css";
 
 function Home(props) {
   const [activePage, setActivePage] = useState("");
@@ -20,7 +20,7 @@ function Home(props) {
   };
 
   return (
-    <main className="main">
+    <React.Fragment>
       <header className="header">
         <span className="header__sort-icon icon"></span>
         <span>Index</span>
@@ -60,7 +60,7 @@ function Home(props) {
           <span className="fa fa-user"></span>Profile
         </div>
       </div>
-    </main>
+    </React.Fragment>
   );
 }
 

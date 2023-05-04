@@ -1,5 +1,6 @@
 import React from "react";
 import MindmapItem from "./MindmapItem";
+import "./MindmapSet.css";
 
 function MindmapSet({ category, mindmapItems, onMindmapItemClick }) {
   return (

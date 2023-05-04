@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import MindmapSet from "../components/MindmapSet";
 import { getMindmaps } from "../services/mindmapService";
+import "./MindmapList.css";
 
 function MindmapList(props) {
   const [mindmaps, setMindmaps] = useState([]);

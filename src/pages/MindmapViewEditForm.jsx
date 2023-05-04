@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "../assets/css/home.css";
-import "../assets/css/categoryCreate.css";
-import "../assets/css/categoryChooser.css";
-import "../assets/css/taskForm.css";
-import "../assets/css/taskView.css";
+// import "../assets/css/home.css";
+// import "../assets/css/categoryCreate.css";
+// import "../assets/css/categoryChooser.css";
+// import "../assets/css/taskForm.css";
+// import "../assets/css/taskView.css";
+import "./MindmapViewEditForm.css";
 import InputDate from "../components/common/viewEditPage/InputDate";
 import InputSelect from "../components/common/viewEditPage/InputSelect";
 import InputNumber from "../components/common/viewEditPage/InputNumber";
@@ -51,6 +52,15 @@ function MindmapViewEditForm(props) {
     const levelObj = revLevels.find((item) => item.name === level_name);
     if (levelObj) return levelObj.value;
     return level_name;
+  };
+
+  const handleImageLinkClick = () => {
+    if (!editMode)
+      props.history.push(
+        `/image-view/${mindmap.id}?imageUrl=${encodeURIComponent(
+          mindmap.mindmapImageUrl
+        )}`
+      );
   };
 
   if (Object.keys(mindmap).length === 0) {
@@ -102,7 +112,7 @@ function MindmapViewEditForm(props) {
             />
           )}
         </div>
-        <div className="task__imagelink">
+        <div className="task__imagelink" onClick={handleImageLinkClick}>
           {!editMode && mindmap.mindmapImageUrl}
           {editMode && (
             <InputText
@@ -164,7 +174,7 @@ function MindmapViewEditForm(props) {
 
       {editMode && (
         <button
-          className="btn btn-submit fix-bottom"
+          className="btn-submit fix-bottom"
           onClick={() => {
             console.log("mindmap :>> ", mindmap);
             saveMindmap(mindmap);

@@ -85,10 +85,6 @@
   margin-bottom: 29px;
 }
 
-.task__line input[type="checkbox"] {
-  margin-left: auto;
-}
-
 .task__icon {
   font-size: 2.4rem;
   margin-right: 0.8rem;
@@ -103,7 +99,7 @@
 }
 
 .btn {
-  width: 100%;
+  width: 154px;
   padding-top: 12px;
   padding-bottom: 12px;
   border: 0;

@@ -1,0 +1,29 @@
+.search_bar {
+  align-items: center;
+  border: 0.8px solid;
+  border-radius: 3px;
+  display: flex;
+  margin: 4px 24px 8px;
+  padding: 12px;
+  width: calc(100% - 48px);
+}
+
+.search_bar__search_icon {
+  background-image: url(../assets/images/search_icon.svg);
+  width: 24px;
+  height: 24px;
+}
+
+.search_bar input {
+  outline: 0;
+  background: #1d1d1d;
+  border: none;
+  color: #979797;
+  margin-left: 12px;
+  width: 100%;
+}
+
+.search_bar_dark {
+  color: #979797;
+  border-color: #979797;
+}

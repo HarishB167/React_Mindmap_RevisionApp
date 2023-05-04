@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import "../assets/css/home.css";
-import "../assets/css/categoryCreate.css";
-import "../assets/css/categoryChooser.css";
-import "../assets/css/taskForm.css";
-import "../assets/css/taskView.css";
-import { getTask } from "../services/taskService";
+// import "../assets/css/home.css";
+// import "../assets/css/categoryCreate.css";
+// import "../assets/css/categoryChooser.css";
+// import "../assets/css/taskForm.css";
+// import "../assets/css/taskView.css";
 import "./TaskViewEditForm.css";
+import { getTask } from "../services/taskService";
 import LabelFAIcon from "../components/common/viewEditPage/LabelFAIcon";
 import InputDate from "../components/common/viewEditPage/InputDate";
+import LoadingPage from "../components/LoadingPage";
 
 function TaskViewEditForm(props) {
   const [editMode, setEditMode] = useState(false);
@@ -30,6 +31,18 @@ function TaskViewEditForm(props) {
         date: new Date(date).toISOString(),
       });
   };
+
+  const handleImageLinkClick = () => {
+    props.history.push(
+      `/image-view/${task.mindmap_id}?imageUrl=${encodeURIComponent(
+        task.mindmap_url
+      )}`
+    );
+  };
+
+  if (Object.keys(task).length === 0) {
+    return <LoadingPage />;
+  }
 
   return (
     <main className="main">
@@ -56,7 +69,9 @@ function TaskViewEditForm(props) {
           </span>
         </div>
         <div className="task__description">{task.mindmap_category}</div>
-        <div className="task__imagelink">{task.mindmap_url}</div>
+        <div className="task__imagelink" onClick={handleImageLinkClick}>
+          {task.mindmap_url}
+        </div>
         <div className="task__line">
           <LabelFAIcon faClass="fa fa-clock-o" label="Task Created :" />
           <InputDate
@@ -84,9 +99,7 @@ function TaskViewEditForm(props) {
         </button>
       </div>
 
-      {editMode && (
-        <button className="btn btn-submit fix-bottom">Edit Task</button>
-      )}
+      {editMode && <button className="btn-submit fix-bottom">Edit Task</button>}
     </main>
   );
 }

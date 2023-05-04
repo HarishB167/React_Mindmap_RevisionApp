@@ -1,0 +1,98 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  min-width: 375px;
+  max-width: 375px;
+  height: 100vh;
+  align-items: center;
+  color: white;
+  background: var(--bg-black);
+  position: relative;
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+.header {
+  margin: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 48px);
+  font-size: 2rem;
+}
+
+.header__sort-icon {
+  background-image: url(../assets/images/sort_icon.svg);
+}
+
+.header__profile-photo {
+  width: 42px;
+  height: 42px;
+}
+
+.form {
+  margin: 0 24px;
+  width: calc(100% - 48px);
+  position: relative;
+  height: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.form-group input[type="text"],
+.form-group select {
+  outline: 0;
+  background: #1d1d1d;
+  color: #979797;
+  border: 0.8px solid;
+  border-radius: 3px;
+  width: 100%;
+  border-color: #979797;
+  padding: 12px;
+}
+
+.input-file input[type="file"] {
+  display: none;
+}
+
+.input-file {
+  padding: 8px 16px;
+  background: #363636;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  width: fit-content;
+}
+
+.btn {
+  width: 154px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  background: rgba(0, 0, 0, 0);
+  color: #8687e7;
+}
+
+.form-group-btns {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 47px;
+}
+
+.btn-submit {
+  background: #8687e7;
+  color: white;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { intToRGB, hashCode } from "../services/utils";
+import "./TaskItem.css";
 
 function TaskItem({ title, datetime, category, onClick }) {
   return (

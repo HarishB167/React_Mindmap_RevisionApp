@@ -1,0 +1,42 @@
+.task-item {
+  margin: 8px 0;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.task-item__cricle {
+  margin-right: 12px;
+}
+
+.task-item__inner {
+  width: 100%;
+}
+
+.task-item__inner-line {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.task-item__title {
+  font-size: 1.6rem;
+}
+.task-item__datetime {
+  font-size: 1.4rem;
+}
+
+.task-item__category {
+  font-size: 1.2rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.task-set--dark {
+  background: #363636;
+}
+
+.c_point {
+  cursor: pointer;
+}

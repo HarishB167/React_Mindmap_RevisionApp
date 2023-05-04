@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import TaskSet from "../components/TaskSet";
 import { getTasks } from "../services/taskService";
+import "./TaskList.css";
 
 function TaskList(props) {
   const [tasks, setTasks] = useState([]);

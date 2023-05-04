@@ -1,4 +1,5 @@
 import React from "react";
+import "./LoadingPage.css";
 
 function LoadingPage(props) {
   return (

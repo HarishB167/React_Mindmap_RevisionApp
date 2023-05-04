@@ -1,4 +1,5 @@
 import React from "react";
+import "./InputNumber.css";
 
 function InputNumber({ name, value, onChange, ...rest }) {
   return (

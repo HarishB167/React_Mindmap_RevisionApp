@@ -1,5 +1,6 @@
 import React from "react";
 import { formatDate } from "../../../services/utils";
+import "./InputDate.css";
 
 const InputDate = ({ name, date, onDateChange, ...rest }) => {
   return (

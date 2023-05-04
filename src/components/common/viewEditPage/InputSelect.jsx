@@ -1,4 +1,5 @@
 import React from "react";
+import "./InputSelect.css";
 
 const InputSelect = ({ name, value, options, onChange, ...rest }) => {
   return (

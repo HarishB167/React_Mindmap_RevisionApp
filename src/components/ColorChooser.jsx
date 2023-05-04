@@ -1,4 +1,5 @@
 import React from "react";
+import "./ColorChooser.css";
 
 function ColorInputItem({ inputName, colorValue }) {
   return (

@@ -1,5 +1,6 @@
 import React from "react";
 import TaskItem from "./TaskItem";
+import "./TaskSet.css";
 
 function TaskSet({ taskHeader, taskItems, onTaskItemClick }) {
   return (

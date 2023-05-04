@@ -1,5 +1,6 @@
 import React from "react";
 import { intToRGB, hashCode, getContrastColor } from "../services/utils";
+import "./MindmapItem.css";
 
 function MindmapItem({ title, createDate, nextRevisionDate, level, onClick }) {
   const bgColor = intToRGB(hashCode(level.repeat(2)));

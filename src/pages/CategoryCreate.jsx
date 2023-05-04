@@ -1,7 +1,8 @@
 import React from "react";
 import ColorChooser from "../components/ColorChooser";
-import "../assets/css/home.css";
-import "../assets/css/categoryCreate.css";
+// import "../assets/css/home.css";
+// import "../assets/css/categoryCreate.css";
+import "./CategoryCreate.css";
 
 function CategoryCreate(props) {
   const colors = [
@@ -16,7 +17,7 @@ function CategoryCreate(props) {
   ];
 
   return (
-    <main className="main">
+    <React.Fragment>
       <header className="header">
         <span>Create new category</span>
       </header>
@@ -52,7 +53,7 @@ function CategoryCreate(props) {
           </button>
         </div>
       </form>
-    </main>
+    </React.Fragment>
   );
 }
 
