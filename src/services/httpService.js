@@ -1,9 +1,8 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-// import logger from "./logService";
+import logger from "./logService";
 
-// axios.defaults.baseURL = process.env.REACT_APP_API_URL;
-axios.defaults.baseURL = "http://127.0.0.1:8000/";
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 axios.interceptors.response.use(null, (error) => {
   console.log("INTERCEPTOR CALLED");
@@ -13,9 +12,8 @@ axios.interceptors.response.use(null, (error) => {
     error.response.status < 500;
 
   if (!expectedError) {
-    // logger.log(error);
+    logger.log(error);
     toast.error("Unexpected error occured");
-    alert("Unexpected error occured");
   }
   return Promise.reject(error);
 });

@@ -7,6 +7,9 @@ import "font-awesome/css/font-awesome.css";
 import "@material-design-icons/font";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import logger from "./services/logService";
+
+logger.init();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
