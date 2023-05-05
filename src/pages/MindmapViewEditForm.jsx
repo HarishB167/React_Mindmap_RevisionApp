@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
-// import "../assets/css/home.css";
-// import "../assets/css/categoryCreate.css";
-// import "../assets/css/categoryChooser.css";
-// import "../assets/css/taskForm.css";
-// import "../assets/css/taskView.css";
 import "./MindmapViewEditForm.css";
 import InputDate from "../components/common/viewEditPage/InputDate";
 import InputSelect from "../components/common/viewEditPage/InputSelect";
-import InputNumber from "../components/common/viewEditPage/InputNumber";
 import InputText from "../components/common/viewEditPage/InputText";
 import LabelFAIcon from "../components/common/viewEditPage/LabelFAIcon";
 import LoadingPage from "../components/LoadingPage";
@@ -158,14 +152,7 @@ function MindmapViewEditForm(props) {
         </div>
         <div className="task__line">
           <LabelFAIcon faClass="fa fa-gamepad" label="Revision count :" />
-          <InputNumber
-            name="revision-count"
-            value={mindmap.revisionCount}
-            onChange={(e) =>
-              setMindmap({ ...mindmap, revisionCount: e.target.valueAsNumber })
-            }
-            disabled={!editMode}
-          />
+          <span class="label_text">{mindmap.revisionCount}</span>
         </div>
         <button className="task__delete-btn">
           <LabelFAIcon faClass="fa fa-trash" label="Delete Task" />

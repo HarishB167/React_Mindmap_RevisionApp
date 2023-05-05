@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 // import "../assets/css/taskForm.css";
 // import "../assets/css/taskView.css";
 import "./TaskViewEditForm.css";
-import { getTask } from "../services/taskService";
+import { getTask, saveRevisionItemForMindmap } from "../services/taskService";
 import LabelFAIcon from "../components/common/viewEditPage/LabelFAIcon";
 import InputDate from "../components/common/viewEditPage/InputDate";
 import LoadingPage from "../components/LoadingPage";
@@ -38,6 +38,12 @@ function TaskViewEditForm(props) {
         task.mindmap_url
       )}`
     );
+  };
+
+  const handleSave = () => {
+    console.log("task :>> ", task);
+    saveRevisionItemForMindmap(task.mindmap_id, task);
+    setEditMode(!editMode);
   };
 
   if (Object.keys(task).length === 0) {
@@ -87,7 +93,7 @@ function TaskViewEditForm(props) {
             type="checkbox"
             name="category-icon"
             id="category-icon"
-            value={task.revision_done}
+            checked={task.revision_done}
             onChange={() =>
               setTask({ ...task, revision_done: !task.revision_done })
             }
@@ -99,7 +105,11 @@ function TaskViewEditForm(props) {
         </button>
       </div>
 
-      {editMode && <button className="btn-submit fix-bottom">Edit Task</button>}
+      {editMode && (
+        <button onClick={handleSave} className="btn-submit fix-bottom">
+          Edit Task
+        </button>
+      )}
     </main>
   );
 }

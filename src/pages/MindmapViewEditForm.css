@@ -116,3 +116,15 @@
   position: absolute;
   bottom: 0;
 }
+
+.label_text {
+  color: inherit;
+  border: none;
+  padding: 8px 16px;
+  background: #363636;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  width: fit-content;
+  outline: none;
+  margin-left: auto;
+}
