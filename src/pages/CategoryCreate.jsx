@@ -1,20 +1,15 @@
-import React from "react";
-import ColorChooser from "../components/ColorChooser";
-// import "../assets/css/home.css";
-// import "../assets/css/categoryCreate.css";
+import React, { useState } from "react";
+import { saveCategory } from "../services/categoryService";
 import "./CategoryCreate.css";
 
 function CategoryCreate(props) {
-  const colors = [
-    "#C9CC41",
-    "#66CC41",
-    "red",
-    "yellow",
-    "orange",
-    "dodgerblue",
-    "deeppink",
-    "firebrick",
-  ];
+  const [category, setCategory] = useState({ id: "", title: "" });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    saveCategory(category);
+    props.history.goBack();
+  };
 
   return (
     <React.Fragment>
@@ -22,30 +17,26 @@ function CategoryCreate(props) {
         <span>Create new category</span>
       </header>
 
-      <form action="" className="form">
+      <form action="" className="form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label for="category-name">Category name:</label>
-          <input type="text" id="category-name" placeholder="Category name" />
-        </div>
-
-        <div className="form-group">
-          <label>Category icon:</label>
-          <label for="category-icon" className="input-file">
-            Choose icon from library
-            <input type="file" name="category-icon" id="category-icon" />
-          </label>
-        </div>
-
-        <div className="form-group">
-          <ColorChooser
-            label="Category color"
-            name="category-color"
-            colorList={colors}
+          <label htmlFor="category-name">Category name:</label>
+          <input
+            type="text"
+            id="category-name"
+            placeholder="Category name"
+            value={category.title}
+            onChange={(e) =>
+              setCategory({ ...category, title: e.target.value })
+            }
           />
         </div>
 
         <div className="form-group form-group-btns">
-          <button className="btn btn-cancel" type="reset">
+          <button
+            className="btn btn-cancel"
+            type="reset"
+            onClick={() => props.history.goBack()}
+          >
             Cancel
           </button>
           <button className="btn btn-submit" type="submit">

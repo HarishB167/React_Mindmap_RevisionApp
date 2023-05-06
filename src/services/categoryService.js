@@ -13,3 +13,16 @@ export async function getCategories() {
 
   return categories;
 }
+
+export async function saveCategory(category) {
+  const c = {
+    title: category.title,
+  };
+  if (category.id) {
+    const result = await http.put(`/revisionapp/categories/${category.id}/`, c);
+    return result.data;
+  } else {
+    const result = await http.post("/revisionapp/categories/", c);
+    return result.data;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./CategoryChooser.css";
 
 function CategoryItem({ name, iconElement, bgColor, onCategorySelected }) {
@@ -12,10 +12,27 @@ function CategoryItem({ name, iconElement, bgColor, onCategorySelected }) {
   );
 }
 
-function CategoryChooser({ onCategorySelected, categories, ...rest }) {
+function CategoryChooser({
+  onCategorySelected,
+  categories,
+  history,
+  outsideClicked,
+  ...rest
+}) {
+  const ref = useRef();
+  const handleOutsideClick = (e) => {
+    if (ref.current && !ref.current.contains(e.target)) {
+      outsideClicked();
+    }
+  };
+
   return (
-    <main className="main main--center" {...rest}>
-      <div className="category-chooser pos-relative">
+    <main
+      className="main main--center"
+      {...rest}
+      onMouseDown={handleOutsideClick}
+    >
+      <div className="category-chooser pos-relative" ref={ref}>
         <span className="category-chooser__title">Choose Category</span>
         <hr />
         <div className="category-chooser__itemslist">
@@ -28,7 +45,12 @@ function CategoryChooser({ onCategorySelected, categories, ...rest }) {
           ))}
         </div>
 
-        <button className="btn-submit c_point">Add Category</button>
+        <button
+          className="btn-submit c_point"
+          onClick={() => history.push("/category-create")}
+        >
+          Add Category
+        </button>
       </div>
     </main>
   );
