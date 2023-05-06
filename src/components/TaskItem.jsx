@@ -2,7 +2,7 @@ import React from "react";
 import { intToRGB, hashCode } from "../services/utils";
 import "./TaskItem.css";
 
-function TaskItem({ title, datetime, category, onClick }) {
+function TaskItem({ title, datetime, category, onClick, revisionDone }) {
   return (
     <div className="task-item task-set--dark c_point" onClick={onClick}>
       <span className="task-item__cricle">
@@ -12,6 +12,12 @@ function TaskItem({ title, datetime, category, onClick }) {
         <div className="task-item__title">{title}</div>
         <div className="task-item__inner-line">
           <div className="task-item__datetime">{datetime}</div>
+          {revisionDone && (
+            <span
+              className="fa fa-check-circle"
+              style={{ color: "lightgreen" }}
+            ></span>
+          )}
           <div
             className="task-item__category"
             style={{ background: intToRGB(hashCode(category)) }}

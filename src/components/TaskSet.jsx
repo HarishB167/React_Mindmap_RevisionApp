@@ -15,6 +15,7 @@ function TaskSet({ taskHeader, taskItems, onTaskItemClick }) {
           title={item.title}
           datetime={item.datetime}
           category={item.category}
+          revisionDone={item.revisionDone}
           onClick={() => onTaskItemClick(item.id)}
         />
       ))}

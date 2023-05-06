@@ -10,6 +10,7 @@ export async function getTasks() {
       title: rItem.mindmap_title,
       datetime: rItem.date,
       category: rItem.mindmap_category,
+      revisionDone: rItem.revision_done,
     })),
   }));
 
