@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import SearchBar from "../components/SearchBar";
 import TaskSet from "../components/TaskSet";
-import { getTasks } from "../services/taskService";
 import "./TaskList.css";
 
 function TaskList(props) {
-  const [tasks, setTasks] = useState([]);
-
-  async function retrieveRenderTasks() {
-    const rs = await getTasks();
-    setTasks(rs);
-  }
-
   useEffect(() => {
-    retrieveRenderTasks();
+    props.onLoad();
   }, []);
 
   const onTaskItemClick = (id) => {
@@ -24,7 +16,7 @@ function TaskList(props) {
     <React.Fragment>
       <SearchBar placeholder="Search for your task..." />
       <div className="content">
-        {tasks.map((item, idx) => (
+        {props.tasks.map((item, idx) => (
           <TaskSet
             key={idx}
             taskHeader={item.taskHeader}

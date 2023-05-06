@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import SearchBar from "../components/SearchBar";
 import MindmapSet from "../components/MindmapSet";
-import { getMindmaps } from "../services/mindmapService";
 import "./MindmapList.css";
 
 function MindmapList(props) {
-  const [mindmaps, setMindmaps] = useState([]);
-
   useEffect(() => {
-    async function retrieveRenderMindmaps() {
-      const mMap = await getMindmaps();
-      setMindmaps(mMap);
-    }
-    retrieveRenderMindmaps();
+    props.onLoad();
   }, []);
 
   const onMindmapItemClick = (id) => {
@@ -23,7 +16,7 @@ function MindmapList(props) {
     <React.Fragment>
       <SearchBar placeholder="Search for your mindmaps..." />
       <div className="content">
-        {mindmaps.map((item, idx) => (
+        {props.mindmaps.map((item, idx) => (
           <MindmapSet
             key={idx}
             category={item.mindmapCategory}
