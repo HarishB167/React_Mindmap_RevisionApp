@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
-import "./ButtonWithModal.css";
+import "./DeleteButtonWithModal.css";
 
-function ButtonWithModal(props) {
+function DeleteButtonWithModal(props) {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <React.Fragment>
@@ -34,4 +34,4 @@ function ButtonWithModal(props) {
   );
 }
 
-export default ButtonWithModal;
+export default DeleteButtonWithModal;

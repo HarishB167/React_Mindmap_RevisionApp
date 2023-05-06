@@ -3,12 +3,12 @@ import { toast } from "react-toastify";
 import {
   getTask,
   saveRevisionItemForMindmap,
-  deleteRevisionItemFormMindmap,
+  deleteRevisionItemForMindmap,
 } from "../services/taskService";
 import LabelFAIcon from "../components/common/viewEditPage/LabelFAIcon";
 import InputDate from "../components/common/viewEditPage/InputDate";
 import LoadingPage from "../components/LoadingPage";
-import ButtonWithModal from "../components/common/ButtonWithModal";
+import DeleteButtonWithModal from "../components/common/DeleteButtonWithModal";
 import "./TaskViewEditForm.css";
 
 function TaskViewEditForm(props) {
@@ -47,7 +47,7 @@ function TaskViewEditForm(props) {
   };
 
   const handleDelete = async () => {
-    await deleteRevisionItemFormMindmap(task.mindmap_id, task);
+    await deleteRevisionItemForMindmap(task.mindmap_id, task);
     toast.warn("Task deleted successfully");
     props.history.replace("/");
   };
@@ -106,12 +106,12 @@ function TaskViewEditForm(props) {
             disabled={!editMode}
           />
         </div>
-        <ButtonWithModal
+        <DeleteButtonWithModal
           className="task__delete-btn c_point"
           onClick={handleDelete}
         >
           <LabelFAIcon faClass="fa fa-trash" label="Delete Task" />
-        </ButtonWithModal>
+        </DeleteButtonWithModal>
       </div>
 
       {editMode && (

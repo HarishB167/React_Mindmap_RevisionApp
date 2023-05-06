@@ -42,7 +42,7 @@ export async function saveRevisionItemForMindmap(mindmapId, revisionItem) {
   }
 }
 
-export async function deleteRevisionItemFormMindmap(mindmapId, revisionItem) {
+export async function deleteRevisionItemForMindmap(mindmapId, revisionItem) {
   if (revisionItem.id) {
     const result = await http.delete(
       `/revisionapp/mindmaps/${mindmapId}/revisions/${revisionItem.id}/`

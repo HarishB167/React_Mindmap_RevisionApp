@@ -128,3 +128,7 @@
   outline: none;
   margin-left: auto;
 }
+
+.c_point {
+  cursor: pointer;
+}

@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
-import "./MindmapViewEditForm.css";
+import { toast } from "react-toastify";
 import InputDate from "../components/common/viewEditPage/InputDate";
 import InputSelect from "../components/common/viewEditPage/InputSelect";
 import InputText from "../components/common/viewEditPage/InputText";
 import LabelFAIcon from "../components/common/viewEditPage/LabelFAIcon";
 import LoadingPage from "../components/LoadingPage";
+import DeleteButtonWithModal from "../components/common/DeleteButtonWithModal";
 import {
-  getCategories,
+  deleteMindmap,
   getMindmap,
   saveMindmap,
 } from "../services/mindmapService";
+import { getCategories } from "../services/categoryService";
 import { getRevisionLevels } from "../services/revisionService";
+import "./MindmapViewEditForm.css";
 
 function MindmapViewEditForm(props) {
   const [mindmap, setMindmap] = useState({});
@@ -55,6 +58,13 @@ function MindmapViewEditForm(props) {
           mindmap.mindmapImageUrl
         )}`
       );
+  };
+
+  const handleDelete = async () => {
+    console.log("Deleting mindmap");
+    await deleteMindmap(mindmap);
+    toast.warn("Mindmap deleted successfully");
+    props.history.replace("/mindmap-list");
   };
 
   if (Object.keys(mindmap).length === 0) {
@@ -154,9 +164,12 @@ function MindmapViewEditForm(props) {
           <LabelFAIcon faClass="fa fa-gamepad" label="Revision count :" />
           <span class="label_text">{mindmap.revisionCount}</span>
         </div>
-        <button className="task__delete-btn">
-          <LabelFAIcon faClass="fa fa-trash" label="Delete Task" />
-        </button>
+        <DeleteButtonWithModal
+          className="task__delete-btn c_point"
+          onClick={handleDelete}
+        >
+          <LabelFAIcon faClass="fa fa-trash" label="Delete Mindmap" />
+        </DeleteButtonWithModal>
       </div>
 
       {editMode && (
