@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-// import "../assets/css/home.css";
-// import "../assets/css/categoryCreate.css";
-// import "../assets/css/categoryChooser.css";
-// import "../assets/css/taskForm.css";
-// import "../assets/css/taskView.css";
-import "./TaskViewEditForm.css";
-import { getTask, saveRevisionItemForMindmap } from "../services/taskService";
+import { toast } from "react-toastify";
+import {
+  getTask,
+  saveRevisionItemForMindmap,
+  deleteRevisionItemFormMindmap,
+} from "../services/taskService";
 import LabelFAIcon from "../components/common/viewEditPage/LabelFAIcon";
 import InputDate from "../components/common/viewEditPage/InputDate";
 import LoadingPage from "../components/LoadingPage";
+import ButtonWithModal from "../components/common/ButtonWithModal";
+import "./TaskViewEditForm.css";
 
 function TaskViewEditForm(props) {
   const [editMode, setEditMode] = useState(false);
@@ -41,9 +42,14 @@ function TaskViewEditForm(props) {
   };
 
   const handleSave = () => {
-    console.log("task :>> ", task);
     saveRevisionItemForMindmap(task.mindmap_id, task);
     setEditMode(!editMode);
+  };
+
+  const handleDelete = async () => {
+    await deleteRevisionItemFormMindmap(task.mindmap_id, task);
+    toast.warn("Task deleted successfully");
+    props.history.replace("/");
   };
 
   if (Object.keys(task).length === 0) {
@@ -100,9 +106,12 @@ function TaskViewEditForm(props) {
             disabled={!editMode}
           />
         </div>
-        <button className="task__delete-btn">
+        <ButtonWithModal
+          className="task__delete-btn c_point"
+          onClick={handleDelete}
+        >
           <LabelFAIcon faClass="fa fa-trash" label="Delete Task" />
-        </button>
+        </ButtonWithModal>
       </div>
 
       {editMode && (

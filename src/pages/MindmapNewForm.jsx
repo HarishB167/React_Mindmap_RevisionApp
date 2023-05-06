@@ -183,6 +183,7 @@ function MindmapNewForm(props) {
           setCategoryPickerShow(false);
         }}
         outsideClicked={() => setCategoryPickerShow(false)}
+        {...props}
       />
     </main>
   );

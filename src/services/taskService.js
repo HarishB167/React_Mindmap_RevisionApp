@@ -41,3 +41,12 @@ export async function saveRevisionItemForMindmap(mindmapId, revisionItem) {
     return result.data;
   }
 }
+
+export async function deleteRevisionItemFormMindmap(mindmapId, revisionItem) {
+  if (revisionItem.id) {
+    const result = await http.delete(
+      `/revisionapp/mindmaps/${mindmapId}/revisions/${revisionItem.id}/`
+    );
+    return result.data;
+  }
+}

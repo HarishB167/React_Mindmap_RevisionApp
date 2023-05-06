@@ -7,11 +7,12 @@ import "./TaskList.css";
 function TaskList(props) {
   const [tasks, setTasks] = useState([]);
 
+  async function retrieveRenderTasks() {
+    const rs = await getTasks();
+    setTasks(rs);
+  }
+
   useEffect(() => {
-    async function retrieveRenderTasks() {
-      const rs = await getTasks();
-      setTasks(rs);
-    }
     retrieveRenderTasks();
   }, []);
 

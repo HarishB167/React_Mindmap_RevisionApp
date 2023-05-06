@@ -120,3 +120,7 @@
   position: absolute;
   bottom: 0;
 }
+
+.c_point {
+  cursor: pointer;
+}
