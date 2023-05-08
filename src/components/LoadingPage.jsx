@@ -3,7 +3,7 @@ import "./LoadingPage.css";
 
 function LoadingPage(props) {
   return (
-    <div className="main loading_page">
+    <div className="loading_page">
       <span className="fa fa-circle-o-notch fa-spin fa-3x"></span>
     </div>
   );

@@ -57,7 +57,7 @@ function TaskViewEditForm(props) {
   }
 
   return (
-    <main className="main">
+    <React.Fragment>
       <header className="header">
         <span className="header__icon" onClick={() => props.history.goBack()}>
           <span className="fa fa-times"></span>
@@ -119,7 +119,7 @@ function TaskViewEditForm(props) {
           Edit Task
         </button>
       )}
-    </main>
+    </React.Fragment>
   );
 }
 

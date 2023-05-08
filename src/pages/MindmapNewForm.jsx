@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import "./MindmapNewForm.css";
 import CategoryChooser from "./CategoryChooser";
 import Input from "../components/common/Input";
+import LoadingPage from "../components/LoadingPage";
 import { getRevisionLevels } from "../services/revisionService";
 import { getCategories } from "../services/categoryService";
 import { saveMindmap } from "../services/mindmapService";
@@ -31,22 +32,22 @@ function MindmapNewForm(props) {
   const [categoryPickerShow, setCategoryPickerShow] = useState(false);
   const [revisionLevels, setRevisionLevels] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const setCategory = (category) => {
     setFormData({ ...formData, category });
   };
 
   useEffect(() => {
-    async function retrieveRevisionLevels() {
+    async function retrieveRevisionLevelsAndCategories() {
+      setIsLoading(true);
       const rLvl = await getRevisionLevels();
       setRevisionLevels(rLvl);
-    }
-    async function retrieveRenderCategories() {
       const ctgs = await getCategories();
       setCategories(ctgs);
+      setIsLoading(false);
     }
-    retrieveRevisionLevels();
-    retrieveRenderCategories();
+    retrieveRevisionLevelsAndCategories();
   }, []);
 
   const handleSubmit = async () => {
@@ -88,8 +89,12 @@ function MindmapNewForm(props) {
     return error ? error.details[0].message : null;
   };
 
+  if (isLoading) {
+    return <LoadingPage />;
+  }
+
   return (
-    <main className="main main--center">
+    <div className="container_mindmap_form">
       <div className="modal-box">
         <form action="" className="form">
           <div className="form-group">
@@ -185,7 +190,7 @@ function MindmapNewForm(props) {
         outsideClicked={() => setCategoryPickerShow(false)}
         {...props}
       />
-    </main>
+    </div>
   );
 }
 

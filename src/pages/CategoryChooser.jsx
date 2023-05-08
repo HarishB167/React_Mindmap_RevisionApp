@@ -27,8 +27,8 @@ function CategoryChooser({
   };
 
   return (
-    <main
-      className="main main--center"
+    <div
+      className="container_category_chooser"
       {...rest}
       onMouseDown={handleOutsideClick}
     >
@@ -52,7 +52,7 @@ function CategoryChooser({
           Add Category
         </button>
       </div>
-    </main>
+    </div>
   );
 }
 

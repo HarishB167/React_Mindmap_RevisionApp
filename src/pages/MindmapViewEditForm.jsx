@@ -72,7 +72,7 @@ function MindmapViewEditForm(props) {
   }
 
   return (
-    <main className="main">
+    <React.Fragment>
       <header className="header">
         <span className="header__icon" onClick={() => props.history.goBack()}>
           <span className="fa fa-times"></span>
@@ -149,7 +149,7 @@ function MindmapViewEditForm(props) {
           />
         </div>
         <div className="task__line">
-          <LabelFAIcon faClass="fa fa-level-up" label="Mindmap Level :" />
+          <LabelFAIcon faClass="fa fa-level-up" label="Revision Level :" />
           <InputSelect
             name="level"
             value={getRevisionLevelIdFor(mindmap.revisionLevelId)}
@@ -184,7 +184,7 @@ function MindmapViewEditForm(props) {
           Edit Task
         </button>
       )}
-    </main>
+    </React.Fragment>
   );
 }
 

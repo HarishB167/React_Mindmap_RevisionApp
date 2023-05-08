@@ -1,20 +1,11 @@
-.main--center {
+.container_category_chooser {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
   justify-content: center;
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  min-width: 375px;
-  max-width: 375px;
-  height: 100vh;
-  align-items: center;
-  color: white;
-  background: var(--bg-black);
-  position: relative;
-  font-size: 1.6rem;
-  line-height: 1.5;
-}
 .category-chooser__title {
   margin: 10px 0;
 }
@@ -38,6 +29,7 @@
   display: flex;
   flex-wrap: wrap;
   font-size: 1.4rem;
+  width: 100%;
 }
 
 .category-item {

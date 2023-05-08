@@ -24,15 +24,14 @@ html {
 body {
   display: flex;
   justify-content: center;
-  background: dodgerblue;
+  background: #343a40;
   font-family: "Lato", sans-serif;
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  min-width: var(--min-width);
-  max-width: var(--max-width);
+  width: 100vw;
   height: 100vh;
   align-items: center;
   color: white;
@@ -40,4 +39,11 @@ body {
   position: relative;
   font-size: 1.6rem;
   line-height: 1.5;
+}
+
+@media screen and (min-width: 600px) {
+  .main {
+    min-width: var(--min-width);
+    max-width: var(--max-width);
+  }
 }

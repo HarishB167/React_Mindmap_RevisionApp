@@ -42,10 +42,11 @@ function Home(props) {
   return (
     <React.Fragment>
       <header className="header">
-        <span className="header__sort-icon icon"></span>
+        <span className="header__sort-icon icon c_point"></span>
         <span>Index</span>
-        <span className="header__profile-photo">
-          <img src={profilePhoto} alt="Profile photo" />
+        <span className="header__profile-photo c_point">
+          {/* <img src={profilePhoto} alt="Profile photo" /> */}
+          <span className="fa fa-sign-in"></span>
         </span>
       </header>
       <Switch>

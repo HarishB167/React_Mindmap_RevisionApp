@@ -37,20 +37,6 @@ body {
   height: 24px;
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  min-width: 375px;
-  max-width: 375px;
-  height: 100vh;
-  align-items: center;
-  color: white;
-  background: var(--bg-black);
-  position: relative;
-  font-size: 1.6rem;
-  line-height: 1.5;
-}
-
 .header {
   margin: 12px 24px;
   display: flex;

@@ -1,35 +1,3 @@
-.main {
-  display: flex;
-  flex-direction: column;
-  min-width: 375px;
-  max-width: 375px;
-  height: 100vh;
-  align-items: center;
-  color: white;
-  background: var(--bg-black);
-  position: relative;
-  font-size: 1.6rem;
-  line-height: 1.5;
-}
-
-.header {
-  margin: 12px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: calc(100% - 48px);
-  font-size: 2rem;
-}
-
-.header__sort-icon {
-  background-image: url(../assets/images/sort_icon.svg);
-}
-
-.header__profile-photo {
-  width: 42px;
-  height: 42px;
-}
-
 .form {
   margin: 0 24px;
   width: calc(100% - 48px);
