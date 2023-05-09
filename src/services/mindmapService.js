@@ -52,7 +52,7 @@ export async function saveMindmap(mindmap) {
     category: mindmap.category,
     image_link: mindmap.mindmapImageUrl,
     creation_date: new Date().toISOString(),
-    revision_level: mindmap.revisionLevel,
+    revision_level: mindmap.revisionLevelId,
   };
   if (mindmap.id) {
     const result = await http.put(`/revisionapp/mindmaps/${mindmap.id}/`, m);

@@ -15,7 +15,7 @@ const schema = {
   description: Joi.string().required().label("Description"),
   mindmapImageUrl: Joi.string().required().label("Image Url"),
   category: Joi.number().required().label("Category"),
-  revisionLevel: Joi.number().required().label("Revision Level"),
+  revisionLevelId: Joi.number().required().label("Revision Level"),
 };
 
 function MindmapNewForm(props) {
@@ -25,7 +25,7 @@ function MindmapNewForm(props) {
     description: "",
     mindmapImageUrl: "",
     category: "",
-    revisionLevel: "",
+    revisionLevelId: "",
   });
   const [errors, setErrors] = useState({});
 
@@ -142,7 +142,7 @@ function MindmapNewForm(props) {
               id="task-mindmap-revision-level"
               required
               onChange={(e) =>
-                setFormData({ ...formData, revisionLevel: e.target.value })
+                setFormData({ ...formData, revisionLevelId: e.target.value })
               }
             >
               <option value="">Select level</option>
