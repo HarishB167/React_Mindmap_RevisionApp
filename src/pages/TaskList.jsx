@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import LoadingPage from "../components/LoadingPage";
 import SearchBar from "../components/SearchBar";
 import TaskSet from "../components/TaskSet";
 import "./TaskList.css";
@@ -16,14 +17,18 @@ function TaskList(props) {
     <React.Fragment>
       <SearchBar placeholder="Search for your task..." />
       <div className="content">
-        {props.tasks.map((item, idx) => (
-          <TaskSet
-            key={idx}
-            taskHeader={item.taskHeader}
-            taskItems={item.taskItems}
-            onTaskItemClick={onTaskItemClick}
-          />
-        ))}
+        {props.isLoading && props.tasks.length === 0 ? (
+          <LoadingPage />
+        ) : (
+          props.tasks.map((item, idx) => (
+            <TaskSet
+              key={idx}
+              taskHeader={item.taskHeader}
+              taskItems={item.taskItems}
+              onTaskItemClick={onTaskItemClick}
+            />
+          ))
+        )}
       </div>
     </React.Fragment>
   );

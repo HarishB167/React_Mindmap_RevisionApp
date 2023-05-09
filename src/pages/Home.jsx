@@ -10,16 +10,23 @@ import "./Home.css";
 
 function Home(props) {
   const [activePage, setActivePage] = useState("");
-  const [data, setData] = useState({ tasks: [], mindmaps: [] });
+  const [data, setData] = useState({
+    tasks: [],
+    mindmaps: [],
+    taskRetrieveProcessOn: false,
+    mindmapsRetrieveProcessOn: false,
+  });
 
   async function retrieveRenderTasks() {
+    setData({ ...data, taskRetrieveProcessOn: true });
     const ts = await getTasks();
-    setData({ ...data, tasks: ts });
+    setData({ ...data, tasks: ts, taskRetrieveProcessOn: false });
   }
 
   async function retrieveRenderMindmaps() {
+    setData({ ...data, mindmapsRetrieveProcessOn: true });
     const mMap = await getMindmaps();
-    setData({ ...data, mindmaps: mMap });
+    setData({ ...data, mindmaps: mMap, mindmapsRetrieveProcessOn: false });
   }
 
   useEffect(() => {
@@ -48,6 +55,7 @@ function Home(props) {
             <MindmapList
               onLoad={retrieveRenderMindmaps}
               mindmaps={data.mindmaps}
+              isLoading={data.mindmapsRetrieveProcessOn}
               {...props}
             />
           )}
@@ -58,6 +66,7 @@ function Home(props) {
             <TaskList
               onLoad={retrieveRenderTasks}
               tasks={data.tasks}
+              isLoading={data.taskRetrieveProcessOn}
               {...props}
             />
           )}
