@@ -17,9 +17,14 @@ function TaskViewEditForm(props) {
 
   useEffect(() => {
     async function retrieveTask() {
-      const tk = await getTask(props.match.params.id);
-      console.log("tk :>> ", tk);
-      setTask(tk);
+      try {
+        const tk = await getTask(props.match.params.id);
+        console.log("tk :>> ", tk);
+        setTask(tk);
+      } catch (ex) {
+        if (ex.response && ex.response.status === 404)
+          props.history.replace("/not-found");
+      }
     }
     retrieveTask();
   }, []);

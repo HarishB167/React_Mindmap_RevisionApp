@@ -23,8 +23,13 @@ function MindmapViewEditForm(props) {
 
   useEffect(() => {
     async function retrieveMindmap() {
-      const mMap = await getMindmap(props.match.params.id);
-      setMindmap(mMap);
+      try {
+        const mMap = await getMindmap(props.match.params.id);
+        setMindmap(mMap);
+      } catch (ex) {
+        if (ex.response && ex.response.status === 404)
+          props.history.replace("/not-found");
+      }
     }
     retrieveMindmap();
     async function retrieveCategoriesNLevels() {

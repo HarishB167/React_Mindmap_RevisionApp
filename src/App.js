@@ -8,6 +8,7 @@ import MindmapNewForm from "./pages/MindmapNewForm";
 import TaskViewEditForm from "./pages/TaskViewEditForm";
 import MindmapViewEditForm from "./pages/MindmapViewEditForm";
 import MindmapImageViewer from "./pages/MindmapImageViewer";
+import NotFound from "./pages/NotFound";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/task-view/:id" component={TaskViewEditForm} />
           <Route path="/mindmap-view/:id" component={MindmapViewEditForm} />
           <Route path="/image-view" component={MindmapImageViewer} />
+          <Route path="/not-found" component={NotFound} />
           <Route path="/" component={Home} />
         </Switch>
       </main>
