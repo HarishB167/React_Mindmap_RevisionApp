@@ -2,6 +2,8 @@
   background: url("../images/sprite_icons_desktop.png") no-repeat top left;
   width: 24px;
   height: 24px;
+  min-width: 24px;
+  min-height: 24px;
   display: inline-block;
 }
 

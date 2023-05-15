@@ -1,0 +1,27 @@
+:root {
+  --table-data-font-color: #989898;
+  --table-border-color: #c4c4c4;
+}
+
+.desktop_home {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.desktop_home__title {
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+}
+
+.dTable_container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 5rem);
+  width: 100%;
+  padding: 1.7rem 0;
+  font-size: 1.4rem;
+  border: white solid 1px;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 30%);
+}

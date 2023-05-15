@@ -17,6 +17,25 @@ export async function getTasks() {
   return tasks;
 }
 
+export async function getTasksList() {
+  const result = await http.get("/revisionapp/revisions/");
+  let tasks = result.data.reduce((accumulator, currentValue) => {
+    if (currentValue.revisions)
+      return [...accumulator, ...currentValue.revisions];
+    else return accumulator;
+  }, []);
+
+  tasks = tasks.map((item) => ({
+    id: item.id,
+    mindmapTitle: item.mindmap_title,
+    revisionDate: item.date,
+    category: item.mindmap_category,
+    created: new Date(item.mindmap_created).toDateString(),
+    status: item.revision_done,
+  }));
+  return tasks;
+}
+
 export async function getTask(id) {
   const result = await http.get(`/revisionapp/revisions/${id}`);
   return result.data;

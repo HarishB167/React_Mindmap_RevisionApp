@@ -10,6 +10,8 @@ import MindmapViewEditForm from "./pages/MindmapViewEditForm";
 import MindmapImageViewer from "./pages/MindmapImageViewer";
 import NotFound from "./pages/NotFound";
 import SideBar from "./components/desktop/SideBar";
+import TaskList from "./pages/desktop/TaskList";
+import DesktopHome from "./pages/desktop/DesktopHome";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import "./assets/css/desktopSprites.css";
@@ -47,9 +49,7 @@ function App() {
     return (
       <React.Fragment>
         <ToastContainer />
-        <main className="main_desktop">
-          <SideBar />
-        </main>
+        <DesktopHome />
       </React.Fragment>
     );
 }

@@ -29,6 +29,22 @@ export async function getMindmaps() {
   return data;
 }
 
+export async function getMindmapsList() {
+  const result = await http.get("/revisionapp/mindmaps/");
+
+  let mindmaps = result.data.map((item) => ({
+    id: item.id,
+    mindmapTitle: item.title,
+    category: item.category_name,
+    created: formatDate(new Date(item.creation_date)),
+    nextRevision: item.next_revision_date
+      ? formatDate(new Date(item.next_revision_date))
+      : "",
+    level: item.revision_level ? item.revision_level : "",
+  }));
+  return mindmaps;
+}
+
 export async function getMindmap(id) {
   const { data: mindmap } = await http.get(`/revisionapp/mindmaps/${id}`);
   const m = {

@@ -2,16 +2,18 @@
   background-color: #2f76e6;
   color: white;
   width: 8.4rem;
+  min-width: 8.4rem;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  transition: width 0.2s;
+  transition: width 0.2s, min-width 0.2s;
 }
 
 .sidebar:hover {
   width: 171px;
+  min-width: 171px;
 }
 
 .sidebar_user {
@@ -35,17 +37,29 @@
   margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .sidebar_items span {
-  margin-top: 3.7rem;
-  cursor: pointer;
   font-size: 2.2rem;
 }
 
 .label_with_text {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 18px 0 18px;
+  cursor: pointer;
+}
+
+.sidebar:hover .label_with_text {
+  justify-content: initial;
+  padding-left: 30px;
+}
+
+.label_with_text:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .sidebar .label_with_text__expanded {
@@ -53,9 +67,6 @@
   height: 0;
   width: 0;
   opacity: 0;
-  transition: height 0.2s ease-in 0.2s;
-  transition: width 1s steps(4, jump-end) 0.4s;
-  transition: opacity 0;
 }
 
 .sidebar:hover .label_with_text__expanded {
@@ -63,4 +74,5 @@
   height: initial;
   width: initial;
   opacity: initial;
+  display: initial;
 }

@@ -1,0 +1,43 @@
+.dTable {
+  height: 100%;
+}
+
+.dTable_head {
+  display: flex;
+}
+
+.dTable_heading {
+  padding: 1.2rem 1.7rem 3rem 1.9rem;
+  flex: 1 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.HeadingWithCarot_carot {
+  margin-left: 1rem;
+}
+
+.dTable_body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 6rem);
+  overflow-y: scroll;
+}
+
+.dTable_row {
+  display: flex;
+}
+
+.dTable_data {
+  flex: 1 0;
+  border-bottom: var(--table-border-color) solid 1px;
+  color: var(--table-data-font-color);
+  padding: 3rem 1.7rem 3rem 1.9rem;
+}
+
+.dTable_more_gray {
+  filter: invert(65%) sepia(0%) saturate(0%) hue-rotate(322deg) brightness(94%)
+    contrast(92%);
+  cursor: pointer;
+}
