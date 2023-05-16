@@ -1,0 +1,49 @@
+:root {
+  --bg-color: #f4f5f7;
+  --bg-input-color: #ebecef;
+  --btn-color: #2f76e6;
+  --btn-color-disabled: #7fa8eb;
+}
+
+.mindmap_form_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.mindmap_form {
+  width: 60%;
+  height: 100%;
+  background: var(--bg-color);
+  margin: 2.5rem 0;
+  padding: 2.3rem 5.8rem;
+  font-size: 1.6rem;
+}
+
+.mindmap_form_title {
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.mindmap_form .submit {
+  padding: 1rem 3rem;
+  background: var(--btn-color);
+  outline: none;
+  border: none;
+  color: white;
+  margin-top: 1.7rem;
+  cursor: pointer;
+}
+
+.submit:disabled {
+  background-color: var(--btn-color-disabled);
+  cursor: initial;
+}

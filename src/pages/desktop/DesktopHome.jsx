@@ -5,6 +5,10 @@ import TaskList from "./TaskList";
 import { getTasksList } from "../../services/taskService";
 import { getMindmapsList } from "../../services/mindmapService";
 import MindmapList from "./MindmapList";
+import MindmapNewForm from "./MindmapNewForm";
+import CategoryCreate from "./CategoryCreate";
+import MindmapViewEditForm from "./MindmapViewEditForm";
+import TaskViewEditForm from "./TaskViewEditForm";
 
 function DesktopHome(props) {
   const [data, setData] = useState({
@@ -31,6 +35,10 @@ function DesktopHome(props) {
       <Route component={SideBar} />
       <div className="main_dekstop__content">
         <Switch>
+          <Route path="/create-task" component={MindmapNewForm} />
+          <Route path="/category-create" component={CategoryCreate} />
+          <Route path="/mindmap-view/:id" component={MindmapViewEditForm} />
+          <Route path="/task-view/:id" component={TaskViewEditForm} />
           <Route
             path="/mindmap-list"
             render={(props) => (

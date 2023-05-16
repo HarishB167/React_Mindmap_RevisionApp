@@ -14,6 +14,17 @@ export async function getCategories() {
   return categories;
 }
 
+export async function getCategoriesList() {
+  const result = await http.get("/revisionapp/categories/");
+
+  const categories = result.data.map((ctg) => ({
+    id: ctg.id,
+    name: ctg.title,
+  }));
+
+  return categories;
+}
+
 export async function saveCategory(category) {
   const c = {
     title: category.title,

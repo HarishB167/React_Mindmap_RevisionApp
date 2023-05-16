@@ -1,0 +1,58 @@
+:root {
+  --bg-color: #f4f5f7;
+  --bg-input-color: #ebecef;
+  --btn-color: #2f76e6;
+  --btn-color-disabled: #7fa8eb;
+}
+
+.task_view {
+  background-color: var(--bg-color);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10rem;
+  max-width: 60rem;
+  margin: auto;
+  border: 1px solid gray;
+}
+
+.task_view_item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2.4rem 0 1.4rem;
+}
+
+.task_view_read_value {
+  max-width: 50%;
+}
+
+.task_view_label {
+  display: block;
+  flex: 1 0;
+}
+
+.task_view_edit_value {
+  padding: 0.85rem;
+  background: var(--bg-input-color);
+  outline: none;
+  border: none;
+}
+
+.submit {
+  padding: 1rem 3rem;
+  background: var(--btn-color);
+  outline: none;
+  border: none;
+  color: white;
+  margin-top: 1.7rem;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.submit:disabled {
+  background-color: var(--btn-color-disabled);
+  cursor: initial;
+}

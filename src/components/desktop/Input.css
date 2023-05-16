@@ -1,0 +1,12 @@
+.form_label {
+  display: block;
+  margin: 2.4rem 0 1.4rem;
+}
+
+.form_input {
+  padding: 0.85rem;
+  width: 100%;
+  background: var(--bg-input-color);
+  outline: none;
+  border: none;
+}

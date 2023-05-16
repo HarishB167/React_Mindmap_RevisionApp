@@ -90,7 +90,7 @@ function TaskViewEditForm(props) {
           {task.mindmap_url}
         </div>
         <div className="task__line">
-          <LabelFAIcon faClass="fa fa-clock-o" label="Task Created :" />
+          <LabelFAIcon faClass="fa fa-clock-o" label="Revision Date :" />
           <InputDate
             date={task.date}
             onDateChange={handleDateChange}

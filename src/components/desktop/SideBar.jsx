@@ -23,11 +23,16 @@ function SideBar(props) {
           label="Home"
           handleClick={() => props.history.push("/")}
         />
+        <LabelWithText
+          labelIconClasses="sprite light bookmarks"
+          label="Add Category"
+          handleClick={() => props.history.push("/category-create")}
+        />
         <LabelWithText labelIconClasses="fa fa-calendar" label="Calendar" />
         <LabelWithText
           labelIconClasses="fa fa-snowflake-o"
           label="Mindmaps"
-          handleClick={() => props.history.push("mindmap-list")}
+          handleClick={() => props.history.push("/mindmap-list")}
         />
         <LabelWithText labelIconClasses="sprite light user" label="Profile" />
         <LabelWithText

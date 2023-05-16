@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Joi from "joi-browser";
 import { toast } from "react-toastify";
-import "./MindmapNewForm.css";
 import CategoryChooser from "./CategoryChooser";
 import Input from "../components/common/Input";
 import LoadingPage from "../components/LoadingPage";
 import { getRevisionLevels } from "../services/revisionService";
 import { getCategories } from "../services/categoryService";
 import { saveMindmap } from "../services/mindmapService";
+import "./MindmapNewForm.css";
 
 const schema = {
   id: Joi.optional(),
@@ -53,7 +53,6 @@ function MindmapNewForm(props) {
   const handleSubmit = async () => {
     const result = validate();
     console.log("result :>> ", result);
-    validateProperty({ name: "title", value: "somevalue" });
     if (result) {
       setErrors(result);
       toast.error("Please fill form completely");

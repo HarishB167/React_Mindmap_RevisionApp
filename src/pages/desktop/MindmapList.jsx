@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Table from "../../components/desktop/Table";
+import LoadingPage from "../../components/LoadingPage";
 import "./MindmapList.css";
 
 function MindmapList(props) {
@@ -7,7 +8,8 @@ function MindmapList(props) {
     props.onLoad();
   }, []);
 
-  const onMindmapItemClick = (id) => {
+  const onMindmapItemClick = (e, id) => {
+    e.preventDefault();
     props.history.push(`/mindmap-view/${id}`);
   };
 
@@ -22,7 +24,14 @@ function MindmapList(props) {
   ];
   useEffect(() => {
     const data = props.mindmaps.map((item) => ({
-      mindmapTitle: item.mindmapTitle,
+      mindmapTitle: (
+        <a
+          className="tableData_link"
+          onClick={(e) => onMindmapItemClick(e, item.id)}
+        >
+          {item.mindmapTitle}
+        </a>
+      ),
       category: item.category,
       created: item.created,
       nextRevision: item.nextRevision,
@@ -31,11 +40,22 @@ function MindmapList(props) {
     setTableData(data);
   }, [props.mindmaps]);
 
+  const handleAdd = () => {
+    props.history.push("/create-task");
+  };
+
   return (
     <div className="desktop_home">
-      <span className="desktop_home__title">Mindmaps</span>
+      <div className="desktop_top_row">
+        <span className="desktop_home__title">Mindmaps</span>
+        <span className="sprite plus add_btn" onClick={handleAdd}></span>
+      </div>
       <div className="dTable_container">
-        {tableData && <Table headings={headings} data={tableData}></Table>}
+        {props.isLoading && props.mindmaps.length === 0 ? (
+          <LoadingPage />
+        ) : (
+          tableData && <Table headings={headings} data={tableData}></Table>
+        )}
       </div>
     </div>
   );
