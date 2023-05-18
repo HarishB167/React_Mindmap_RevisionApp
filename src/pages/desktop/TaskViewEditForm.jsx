@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import LoadingIcon from "../../components/desktop/LoadingIcon";
 import LoadingPage from "../../components/LoadingPage";
+import DeleteButtonWithModal from "../../components/desktop/DeleteButtonWithModal";
 import {
   deleteRevisionItemForMindmap,
   getTask,
@@ -13,15 +14,19 @@ import "./TaskViewEditForm.css";
 function TaskViewEditForm(props) {
   const [editMode, setEditMode] = useState(false);
   const [task, setTask] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     async function retrieveTask() {
       try {
+        setIsLoading(true);
         const tk = await getTask(props.match.params.id);
         console.log("tk :>> ", tk);
         setTask(tk);
+        setIsLoading(false);
       } catch (ex) {
+        setIsLoading(false);
         if (ex.response && ex.response.status === 404)
           props.history.replace("/not-found");
       }
@@ -58,12 +63,14 @@ function TaskViewEditForm(props) {
   };
 
   const handleDelete = async () => {
+    setIsLoading(true);
     await deleteRevisionItemForMindmap(task.mindmap_id, task);
     toast.warn("Task deleted successfully");
     props.history.replace("/");
+    setIsLoading(false);
   };
 
-  if (Object.keys(task).length === 0) {
+  if (isLoading) {
     return <LoadingPage />;
   }
   return (
@@ -79,6 +86,12 @@ function TaskViewEditForm(props) {
       <div className="task_view_item">
         <span className="task_view_label">Image URL :</span>
         <span className="task_view_read_value">{task.mindmap_url}</span>
+      </div>
+      <div className="task_view_item">
+        <label htmlFor="mindmapImageUrl" className="task_view_label"></label>
+        <button className="task_view_open_image" onClick={handleImageLinkClick}>
+          Open Image
+        </button>
       </div>
       <div className="task_view_item">
         <label htmlFor="date" className="task_view_label">
@@ -117,6 +130,12 @@ function TaskViewEditForm(props) {
         >
           Save
         </button>
+        <DeleteButtonWithModal
+          className="task_view_delete_btn"
+          onClick={handleDelete}
+        >
+          Delete Task
+        </DeleteButtonWithModal>
         <LoadingIcon isLoading={isSaving} />
       </div>
     </div>

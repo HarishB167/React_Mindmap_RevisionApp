@@ -3,11 +3,10 @@
   --bg-input-color: #ebecef;
   --btn-color: #2f76e6;
   --btn-color-disabled: #7fa8eb;
-  --btn-color-red: #dd7973;
-  --btn-color-red-disabled: #e7a29f;
+  --btn-open-image: #5dbea3;
 }
 
-.task_view {
+.mindmap_view {
   background-color: var(--bg-color);
   width: 100%;
   height: 100%;
@@ -19,7 +18,7 @@
   border: 1px solid gray;
 }
 
-.task_view_item {
+.mindmap_view_item {
   display: flex;
   width: 100%;
   align-items: center;
@@ -27,23 +26,23 @@
   margin: 2.4rem 0 1.4rem;
 }
 
-.task_view_read_value {
+.mindmap_view_read_value {
   max-width: 50%;
 }
 
-.task_view_label {
+.mindmap_view_label {
   display: block;
   flex: 1 0;
 }
 
-.task_view_edit_value {
+.mindmap_view_edit_value {
   padding: 0.85rem;
   background: var(--bg-input-color);
   outline: none;
   border: none;
 }
 
-.task_view_open_image {
+.mindmap_view_open_image {
   padding: 1rem 3rem;
   background: var(--btn-open-image);
   outline: none;
@@ -53,7 +52,7 @@
   width: fit-content;
 }
 
-.task_view_open_image:hover {
+.mindmap_view_open_image:hover {
   outline: 1px solid var(--btn-open-image);
   box-shadow: 0px 0px 5px var(--btn-open-image);
 }
@@ -71,21 +70,5 @@
 
 .submit:disabled {
   background-color: var(--btn-color-disabled);
-  cursor: initial;
-}
-
-.task_view_delete_btn {
-  padding: 1rem 3rem;
-  background: var(--btn-color-red);
-  outline: none;
-  border: none;
-  color: white;
-  margin-top: 1.7rem;
-  cursor: pointer;
-  width: fit-content;
-}
-
-.task_view_delete_btn:disabled {
-  background-color: var(--btn-color-red-disabled);
   cursor: initial;
 }

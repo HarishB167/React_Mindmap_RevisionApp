@@ -1,0 +1,29 @@
+.buttonModal-desktop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-color);
+  min-width: calc(var(--min-width) * 0.9);
+  max-width: calc(var(--max-width) * 0.9);
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.buttonModal-desktop-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.buttonModal-desktop-cancel,
+.buttonModal-desktop-confirm {
+  margin: 15px 19px 11px;
+  padding: 12px 10px;
+  width: calc(100% - 38px);
+  background: var(--btn-color);
+  color: white;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
