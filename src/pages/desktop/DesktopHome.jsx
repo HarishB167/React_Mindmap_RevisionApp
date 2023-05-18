@@ -9,6 +9,7 @@ import MindmapNewForm from "./MindmapNewForm";
 import CategoryCreate from "./CategoryCreate";
 import MindmapViewEditForm from "./MindmapViewEditForm";
 import TaskViewEditForm from "./TaskViewEditForm";
+import MindmapImageViewer from "./MindmapImageViewer";
 
 function DesktopHome(props) {
   const [data, setData] = useState({
@@ -39,6 +40,7 @@ function DesktopHome(props) {
           <Route path="/category-create" component={CategoryCreate} />
           <Route path="/mindmap-view/:id" component={MindmapViewEditForm} />
           <Route path="/task-view/:id" component={TaskViewEditForm} />
+          <Route path="/image-view" component={MindmapImageViewer} />
           <Route
             path="/mindmap-list"
             render={(props) => (

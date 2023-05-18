@@ -67,6 +67,7 @@
   height: 0;
   width: 0;
   opacity: 0;
+  white-space: nowrap;
 }
 
 .sidebar:hover .label_with_text__expanded {

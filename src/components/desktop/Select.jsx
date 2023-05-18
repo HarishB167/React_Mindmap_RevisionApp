@@ -23,7 +23,7 @@ const Select = ({
         value={value}
         onChange={handleChange}
       >
-        <option value="">Select level</option>
+        <option value="">Select</option>
         {optionsList.map((item) => (
           <option key={item[keyId]} value={item[keyId]}>
             {item[keyValue]}
