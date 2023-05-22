@@ -1,3 +1,8 @@
+:root {
+  --table-data-font-color: #000000;
+  --table-border-color: #c4c4c4;
+}
+
 .dTable {
   height: 100%;
 }

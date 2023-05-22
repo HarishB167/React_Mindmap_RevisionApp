@@ -1,8 +1,3 @@
-:root {
-  --table-data-font-color: #989898;
-  --table-border-color: #c4c4c4;
-}
-
 .desktop_home {
   display: flex;
   flex-direction: column;
@@ -22,6 +17,12 @@
 .add_btn {
   border-radius: 2px;
   outline: 1px solid #2f76e6;
+  cursor: pointer;
+}
+
+.toggle_btn {
+  margin-left: auto;
+  margin-right: 5rem;
   cursor: pointer;
 }
 

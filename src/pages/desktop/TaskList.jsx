@@ -3,6 +3,17 @@ import Table from "../../components/desktop/Table";
 import LoadingPage from "../../components/LoadingPage";
 import "./TaskList.css";
 
+const ToggleButton = ({ active, handleClick }) => {
+  let toggleIconClass = "toggle-left";
+  if (active) toggleIconClass = "toggle-right";
+  return (
+    <span
+      className={`sprite ${toggleIconClass} toggle_btn`}
+      onClick={handleClick}
+    ></span>
+  );
+};
+
 function TaskList(props) {
   useEffect(() => {
     props.onLoad();
@@ -14,6 +25,7 @@ function TaskList(props) {
   };
 
   const [tableData, setTableData] = useState([]);
+  const [showPendingRevOnly, setShowPendingRevOnly] = useState(false);
 
   const headings = [
     "Title",
@@ -23,7 +35,8 @@ function TaskList(props) {
     "Status",
     "",
   ];
-  useEffect(() => {
+
+  const renderAllTasks = () => {
     const data = props.tasks.map((item) => ({
       mindmapTitle: (
         <a
@@ -40,16 +53,34 @@ function TaskList(props) {
       button: <span className="sprite more-vertical dTable_more_gray"></span>,
     }));
     setTableData(data);
+  };
+
+  useEffect(() => {
+    renderAllTasks();
   }, [props.tasks]);
+
+  useEffect(() => {
+    if (showPendingRevOnly)
+      setTableData(tableData.filter((item) => item.status === "Not Done"));
+    else renderAllTasks();
+  }, [showPendingRevOnly]);
 
   const handleAdd = () => {
     props.history.push("/create-task");
+  };
+
+  const handleRevisionStatustoggle = () => {
+    setShowPendingRevOnly(!showPendingRevOnly);
   };
 
   return (
     <div className="desktop_home">
       <div className="desktop_top_row">
         <span className="desktop_home__title">Tasks</span>
+        <ToggleButton
+          active={showPendingRevOnly}
+          handleClick={handleRevisionStatustoggle}
+        />
         <span className="sprite plus add_btn" onClick={handleAdd}></span>
       </div>
       <div className="dTable_container">
